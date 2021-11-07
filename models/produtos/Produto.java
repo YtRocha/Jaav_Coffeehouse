@@ -4,7 +4,7 @@ public abstract class Produto {
 
     private String nome;
 
-    private float preco;
+    private Double preco;
 
     private int quantidade;
 
