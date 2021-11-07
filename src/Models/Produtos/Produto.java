@@ -1,3 +1,5 @@
+package Models.Produtos;
+
 public abstract class Produto {
 
     private Long id;
