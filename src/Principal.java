@@ -1,8 +1,7 @@
 
 import javax.swing.*;
 import java.awt.*;
-
-import Views.Clientes.*;
+import Views.Vendas.Vendas;
 
 public class Principal {
     public static void main(String[] args) {
@@ -13,7 +12,8 @@ public class Principal {
                 - Cadastrar vendas sem os dados do(a) cliente
                 - Listar todas as vendas
         */
-        principalAbas.addTab("Vendas", new JPanel());
+        JPanel vendas_interface = new Vendas().getPainel();
+        principalAbas.addTab("Vendas", vendas_interface);
         /*
             Aba Clientes
                 - Cadastrar/excluir um(a) cliente
@@ -39,6 +39,7 @@ public class Principal {
         JFrame tela = new JFrame("JAAV Coffee House System");
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.add(principalAbas);
+        tela.setSize(800, 600);
         tela.setMinimumSize(new Dimension(800, 600));
         tela.setVisible(true);
         
