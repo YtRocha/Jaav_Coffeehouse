@@ -10,7 +10,6 @@ public abstract class Produto {
 
     private int quantidade;
 
-
     public Produto() {
     }
 
@@ -25,24 +24,35 @@ public abstract class Produto {
 
     public Long getId() {
         return this.id;
-    }    
+    }
 
     public String getNome() {
         return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Double getPreco() {
         return this.preco;
     }
 
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
     public int getQuantidade() {
         return this.quantidade;
     }
 
-    public abstract float calcularValorDaCompra();
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
-    public abstract void retirarDoEstoque();
 
-    public abstract void colocarNoEstoque();
+    public abstract void retirarDoEstoque(int quantidade);
+
+    public abstract void colocarNoEstoque(int quantidade);
 
 }
