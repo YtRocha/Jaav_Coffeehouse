@@ -5,11 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LerTexto {
+public class LerArquivo {
     private String caminho;
     private String conteudo;
 
-    public LerTexto(String caminho){
+    public LerArquivo() {
+    }
+
+    public LerArquivo(String caminho){
         this.caminho = caminho;
         this.conteudo = lerArquivo();
     }
