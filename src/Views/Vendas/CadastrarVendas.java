@@ -2,10 +2,10 @@ package Views.Vendas;
 
 import javax.swing.*;
 
-public class CadastraVendas extends AbaVendas {
+public class CadastrarVendas extends AbaVendas {
     JLabel labelTitulo = new JLabel("Cadastro de Vendas");
 
-    public CadastraVendas() {
+    public CadastrarVendas() {
         inicializar();
     }
 
