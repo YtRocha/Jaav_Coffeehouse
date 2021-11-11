@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import Views.Vendas.Vendas;
 
+
 public class Principal {
     public static void main(String[] args) {
         JTabbedPane principalAbas = new JTabbedPane();
@@ -36,12 +37,14 @@ public class Principal {
         */
         principalAbas.addTab("Produtos", new JPanel());
 
+        ImageIcon icon = new ImageIcon("src/Img/logo.png");
         JFrame tela = new JFrame("JAAV Coffee House System");
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.add(principalAbas);
         tela.setSize(800, 600);
         tela.setMinimumSize(new Dimension(800, 600));
         tela.setVisible(true);
+        tela.setIconImage(icon.getImage());
         
     }
 }
