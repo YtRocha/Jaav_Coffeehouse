@@ -1,5 +1,8 @@
 
+
 # Sistema de Controle de Estoque e Vendas
+<a href="https://github.com/YtRocha/Jaav_Coffeehouse"><img src="src/Img/logo.png" width=650px height=500px></a>
+
 ### Projeto de Programação Orientada a Objetos
 
 ### 1. Descrição do Projeto
