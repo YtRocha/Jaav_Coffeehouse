@@ -1,6 +1,8 @@
 
 import javax.swing.*;
 import java.awt.*;
+
+import Views.Clientes.Clientes;
 import Views.Vendas.Vendas;
 
 
@@ -20,7 +22,8 @@ public class Principal {
                 - Cadastrar/excluir um(a) cliente
                 - Listar os(as) clientes cadastrados e excluidos
         */
-        principalAbas.addTab("Clientes", new JPanel());
+        JPanel clientes_interface = new Clientes().getPainel();
+        principalAbas.addTab("Clientes", clientes_interface);
         /*
             Aba compras
                 - Listar compras de um(a) determinado(a) cliente
