@@ -1,16 +1,76 @@
 package Views.Vendas;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CadastrarVendas extends AbaVendas {
-    JLabel labelTitulo = new JLabel("Cadastro de Vendas");
+    JLabel labelProduto = new JLabel("Digite o nome do produto:");
+    JTextField campoProduto = new JTextField(10);
+
+    JLabel labelQuantidade = new JLabel("Digite a quantidade vendida:");
+    JTextField campoQuantidade = new JTextField(10);
+
+    JLabel labelValor = new JLabel("Digite o valor do produto:");
+    JTextField campoValor = new JTextField(10);
+
+    JLabel labelCliente = new JLabel("Digite o CPF do comprador:");
+    JTextField campoCliente = new JTextField(10);
+
+    JButton botaoCadastrar = new JButton("Cadastrar");
 
     public CadastrarVendas() {
         inicializar();
+        eventos();
     }
 
-    public void inicializar(){
-        painel.add(labelTitulo);
+    public void inicializar() {
+        painel.setLayout(new BorderLayout());
+
+        botaoCadastrar.setPreferredSize(new Dimension(120, 30));
+        botaoCadastrar.setFont(new Font("Arial", Font.BOLD, 14));
+        botaoCadastrar.setFocusPainted(false);
+        botaoCadastrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        JPanel painelCadastro = new JPanel(new GridLayout(12, 2));
+        JPanel leftSpace = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel rightSpace = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JPanel rodape = new JPanel();
+
+        painelCadastro.add(labelProduto);
+        painelCadastro.add(campoProduto);
+        painelCadastro.add(labelQuantidade);
+        painelCadastro.add(campoQuantidade);
+        painelCadastro.add(labelValor);
+        painelCadastro.add(campoValor);
+        painelCadastro.add(labelCliente);
+        painelCadastro.add(campoCliente);
+
+        rodape.add(botaoCadastrar);
+        painel.add(leftSpace, BorderLayout.LINE_START);
+        painel.add(rightSpace, BorderLayout.LINE_END);
+        painel.add(painelCadastro, BorderLayout.CENTER);
+
+        painel.add(rodape, BorderLayout.PAGE_END);
     }
 
+    public void eventos() {
+        botaoCadastrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO: implementar cadastro de vendas
+            }
+        });
+    }
 }
