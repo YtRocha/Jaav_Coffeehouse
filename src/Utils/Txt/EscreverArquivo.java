@@ -1,5 +1,6 @@
 package Utils.Txt;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class EscreverArquivo {
     
     public boolean escreverArquivo(){
         try{
-            FileWriter arquivo = new FileWriter(caminho);
+            FileWriter arquivo = new FileWriter(caminho, true);
             PrintWriter escreverArquivo = new PrintWriter(arquivo);
             escreverArquivo.println(texto);
             escreverArquivo.close();
