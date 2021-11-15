@@ -14,6 +14,7 @@ public class Principal {
                 - Cadastrar vendas
                 - Cadastrar vendas sem os dados do(a) cliente
                 - Listar todas as vendas
+                - Listar compras de um(a) determinado(a) cliente
         */
         JPanel vendas_interface = new Vendas().getPainel();
         principalAbas.addTab("Vendas", vendas_interface);
@@ -24,11 +25,6 @@ public class Principal {
         */
         JPanel clientes_interface = new Clientes().getPainel();
         principalAbas.addTab("Clientes", clientes_interface);
-        /*
-            Aba compras
-                - Listar compras de um(a) determinado(a) cliente
-        */  
-        principalAbas.addTab("Compras", new JPanel());
         /*
             Aba produtos
                 - Cadastrar produtos
@@ -44,8 +40,8 @@ public class Principal {
         JFrame tela = new JFrame("JAAV Coffee House System");
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.add(principalAbas);
-        tela.setSize(800, 600);
         tela.setMinimumSize(new Dimension(800, 600));
+        tela.setResizable(false);
         tela.setVisible(true);
         tela.setIconImage(icon.getImage());
         
