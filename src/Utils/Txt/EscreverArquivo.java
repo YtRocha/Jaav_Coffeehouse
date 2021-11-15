@@ -5,8 +5,19 @@ import java.io.PrintWriter;
 import java.io.IOException;
 
 public class EscreverArquivo {
+
+    private String caminho;
+
+    private String texto;
+
+
+    public EscreverArquivo(String caminho, String texto) {
+        this.caminho = caminho;
+        this.texto = texto;
+    }
+
     
-    public static boolean escreverArquivo(String caminho, String texto){
+    public boolean escreverArquivo(){
         try{
             FileWriter arquivo = new FileWriter(caminho);
             PrintWriter escreverArquivo = new PrintWriter(arquivo);
