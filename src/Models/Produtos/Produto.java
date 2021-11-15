@@ -9,11 +9,12 @@ public abstract class Produto {
     private Double preco;
 
     private int quantidade;
+    
 
+    /* ---- Construtores ---- */
 
     public Produto() {
     }
-
 
     public Produto(Long id, String nome, Double preco, int quantidade) {
         this.id = id;
@@ -22,27 +23,51 @@ public abstract class Produto {
         this.quantidade = quantidade;
     }
 
+    /* ---- Getters e Setters ---- */
 
     public Long getId() {
         return this.id;
-    }    
+    }
 
     public String getNome() {
         return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Double getPreco() {
         return this.preco;
     }
 
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
     public int getQuantidade() {
         return this.quantidade;
     }
 
-    public abstract float calcularValorDaCompra();
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+    
+    /* ---- Metodos ---- */
 
-    public abstract void retirarDoEstoque();
+    public void retirarDoEstoque(int quantidade){
+        if(this.getQuantidade() > 0){
+            if((this.getQuantidade()-quantidade) < 0){
 
-    public abstract void colocarNoEstoque();
+            }
+            else
+                this.setQuantidade(this.getQuantidade()-quantidade);
+        }
+    }
+
+    public void colocarNoEstoque(int quantidade){
+        this.setQuantidade(this.getQuantidade()+quantidade);
+    }
+
 
 }
