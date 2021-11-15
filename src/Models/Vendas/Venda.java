@@ -1,70 +1,50 @@
 package Models.Vendas;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import Models.Clientes.Cliente;
-import Models.Produtos.Produto;
-
 public class Venda {
-    
-    private Long id;
-
-    private Cliente cliente;
-
+    private String produto;
+    private String cpf;
     private double valor;
+    private int quantidade;
 
-    private List<Produto> produtos = new ArrayList<Produto>();
-    
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Cliente getCliente() {
-        return this.cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     public double getValor() {
         return this.valor;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public List<Produto> getProdutos() {
-        return this.produtos;
+    public int getQuantidade() {
+        return this.quantidade;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
-    
+
+    public String getCpf() {
+        return this.cpf;
+    }
+
+    public void setProduto(String produto) {
+        this.produto = produto;
+    }
+
+    public String getProduto() {
+        return this.produto;
+    }
 
     public Venda() {
     }
 
-
-    public Venda(Long id, Cliente cliente, double valor, List<Produto> produtos) {
-        this.id = id;
-        this.cliente = cliente;
+    public Venda(String produto, String cpf, double valor, int quantidade) {
+        this.produto = produto;
+        this.cpf = cpf;
         this.valor = valor;
-        this.produtos = produtos;
+        this.quantidade = quantidade;
     }
-
-    public Venda(Long id, double valor, List<Produto> produtos) {
-            this.id = id;
-            this.valor = valor;
-            this.produtos = produtos;
-        }
-
 }
