@@ -10,8 +10,7 @@ public class ListaVendas extends AbaVendas {
     }
 
     public void inicializar(){
-        painel.add(new JLabel("Lista de vendas"))
-                .setBounds(10, 10, 100, 20);
+        painel.add(new JLabel("Lista de vendas"));
     }
 
 }

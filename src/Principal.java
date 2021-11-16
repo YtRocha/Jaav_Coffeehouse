@@ -1,7 +1,10 @@
 
 import javax.swing.*;
 import java.awt.*;
+
+import Views.Clientes.Clientes;
 import Views.Vendas.Vendas;
+
 
 public class Principal {
     public static void main(String[] args) {
@@ -11,6 +14,7 @@ public class Principal {
                 - Cadastrar vendas
                 - Cadastrar vendas sem os dados do(a) cliente
                 - Listar todas as vendas
+                - Listar compras de um(a) determinado(a) cliente
         */
         JPanel vendas_interface = new Vendas().getPainel();
         principalAbas.addTab("Vendas", vendas_interface);
@@ -19,12 +23,8 @@ public class Principal {
                 - Cadastrar/excluir um(a) cliente
                 - Listar os(as) clientes cadastrados e excluidos
         */
-        principalAbas.addTab("Clientes", new JPanel());
-        /*
-            Aba compras
-                - Listar compras de um(a) determinado(a) cliente
-        */  
-        principalAbas.addTab("Compras", new JPanel());
+        JPanel clientes_interface = new Clientes().getPainel();
+        principalAbas.addTab("Clientes", clientes_interface);
         /*
             Aba produtos
                 - Cadastrar produtos
@@ -36,12 +36,14 @@ public class Principal {
         */
         principalAbas.addTab("Produtos", new JPanel());
 
+        ImageIcon icon = new ImageIcon("src/Img/logo.png");
         JFrame tela = new JFrame("JAAV Coffee House System");
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.add(principalAbas);
-        tela.setSize(800, 600);
         tela.setMinimumSize(new Dimension(800, 600));
+        tela.setResizable(false);
         tela.setVisible(true);
+        tela.setIconImage(icon.getImage());
         
     }
 }
