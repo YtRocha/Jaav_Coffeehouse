@@ -21,7 +21,7 @@ public class EscreverJSON {
     public boolean escreverJson(){
 
         try{
-            FileWriter json = new FileWirter(caminho, true);
+            FileWriter json = new FileWriter(caminho, true);
             json.write(objeto.toJSONString());
             json.close();
             return true;
