@@ -14,6 +14,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Models.Vendas.CadastraVenda;
+
 public class CadastrarVendas extends AbaVendas {
     JLabel labelProduto = new JLabel("Digite o nome do produto:");
     JTextField campoProduto = new JTextField(10);
@@ -68,7 +70,19 @@ public class CadastrarVendas extends AbaVendas {
         botaoCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: implementar cadastro de vendas
+                String cpf = campoCliente.getText();
+                String produto = campoProduto.getText();
+                int quantidade = Integer.parseInt(campoQuantidade.getText());
+                double valor = Double.parseDouble(campoValor.getText());
+
+                if(!cpf.equals("")){
+                    CadastraVenda cadastrarVendas = new CadastraVenda(produto,valor,quantidade,cpf);
+                    cadastrarVendas.cadastrar();
+                } else {
+                    CadastraVenda cadastrarVendas = new CadastraVenda(produto,valor,quantidade);
+                    cadastrarVendas.cadastrar();
+                }
+                
             }
         });
     }
