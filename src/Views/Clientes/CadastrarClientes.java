@@ -2,7 +2,9 @@ package Views.Clientes;
 
 import javax.swing.*;
 
-public class CadastrarClientes extends AbaClientes {
+import Views.Formulario;
+
+public class CadastrarClientes extends AbaClientes implements Formulario {
     
     JLabel labelTitulo = new JLabel("Cadastro de Clientes");
     JTextField textFieldNome = new JTextField();
@@ -13,6 +15,12 @@ public class CadastrarClientes extends AbaClientes {
 
     public void inicializar(){
         painel.add(labelTitulo);
+    }
+
+    @Override
+    public void eventos() {
+        // TODO Implementar eventos
+        
     }
 
 }
