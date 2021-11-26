@@ -3,7 +3,7 @@ package Utils.JSON;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 
 public class EscreverJSON {
     
