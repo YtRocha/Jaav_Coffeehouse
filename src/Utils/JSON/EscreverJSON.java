@@ -22,7 +22,7 @@ public class EscreverJSON {
 
         try{
             FileWriter json = new FileWriter(caminho, true);
-            json.write(objeto.toJSONString());
+            json.write(objeto.toString());
             json.close();
             return true;
         } catch(IOException erro){
