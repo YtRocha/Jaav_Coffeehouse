@@ -55,7 +55,6 @@ public class FiltrarVendas extends AbaVendas implements Formulario {
             vendas = new LerVendas().dadosVendasIdentificadas(!cpf.equals("") ? cpf : null);
             pnlTabela.removeAll();
             inicializar();
-            eventos();
         });
     }
 
