@@ -5,7 +5,7 @@ import javax.swing.*;
 import Models.Vendas.LerVendas;
 
 public class ListaVendas extends AbaVendas {
-    Object [][] vendas = new LerVendas().dadosVendas();
+    String[][] vendas = new LerVendas().dadosVendas();
 
     public ListaVendas() {
         inicializar();

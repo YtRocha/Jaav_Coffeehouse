@@ -1,37 +1,47 @@
 package Models.Vendas;
 
+import java.util.ArrayList;
+
 import Utils.Txt.LerArquivo;
 
 public class LerVendas {
-    LerArquivo vendas = new LerArquivo("src\\Database\\vendas.txt");
-    LerArquivo vendas_identificadas = new LerArquivo("src\\Database\\vendas_identificadas.txt");
+    LerArquivo vendas = new LerArquivo("src/Database/vendas.txt");
+    LerArquivo vendas_identificadas = new LerArquivo("src/Database/vendas_identificadas.txt");
 
-    public Object[][] dadosVendas() {
+    public String[][] dadosVendas() {
         String[] vendas = this.vendas.lerArquivo().split("\n");
-        Object[][] vendas_array = new Object[vendas.length][3];
+        ArrayList<String[]> dados = new ArrayList<String[]>();
+        String[][] dados_array = new String[dados.size()][];
 
-        for (int i = 0; i < vendas.length; i++) {
-            String[] vendas_linha = vendas[i].split("\\|");
-            vendas_array[i][0] = vendas_linha[0];
-            vendas_array[i][1] = vendas_linha[1];
-            vendas_array[i][2] = vendas_linha[2];
+        for (String venda : vendas) {
+            String[] dados_venda = venda.split("\\|");
+            dados.add(dados_venda);
+
+            System.out.println(venda);
         }
-
-        return vendas_array;
+        dados_array = dados.toArray(dados_array);
+        return dados_array;
     }
 
-    public Object[][] dadosVendasIdentificadas() {
-        String[] vendas_identificadas = this.vendas_identificadas.lerArquivo().split("\n");
-        Object[][] vendas_identificadas_array = new Object[vendas_identificadas.length][4];
+    // TODO: Melhorar a lógica do filtro
+    public String[][] dadosVendasIdentificadas(String filtrar_cpf) {
+        String[] vendas = this.vendas_identificadas.lerArquivo().split("\n");
+        ArrayList<String[]> dados = new ArrayList<String[]>();
+        String[][] dados_array = new String[dados.size()][];
 
-        for (int i = 0; i < vendas_identificadas.length; i++) {
-            String[] vendas_identificadas_linha = vendas_identificadas[i].split("\\|");
-            vendas_identificadas_array[i][0] = vendas_identificadas_linha[0];
-            vendas_identificadas_array[i][1] = vendas_identificadas_linha[1];
-            vendas_identificadas_array[i][2] = vendas_identificadas_linha[2];
-            vendas_identificadas_array[i][3] = vendas_identificadas_linha[3];
+        for (String venda : vendas) {
+            String[] dados_venda = venda.split("\\|");
+
+            if(filtrar_cpf != null) {
+                if (dados_venda[3].trim().equals(filtrar_cpf)) {
+                    dados.add(dados_venda);
+                }
+            }else{
+                dados.add(dados_venda);
+            }
         }
 
-        return vendas_identificadas_array;
+        dados_array = dados.toArray(dados_array);
+        return dados_array;
     }
 }

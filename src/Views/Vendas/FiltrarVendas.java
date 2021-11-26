@@ -7,7 +7,7 @@ import Models.Vendas.LerVendas;
 import Views.Formulario;
 
 public class FiltrarVendas extends AbaVendas implements Formulario {
-    Object [][] vendas = new LerVendas().dadosVendasIdentificadas(null);
+    String[][] vendas = new LerVendas().dadosVendasIdentificadas(null);
 
     JLabel lblFiltrarVendas = new JLabel("Digite um CPF para filtrar:");
     JTextField txtFiltrarVendas = new JTextField(10);
