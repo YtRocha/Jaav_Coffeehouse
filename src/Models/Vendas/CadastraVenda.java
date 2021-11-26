@@ -5,7 +5,7 @@ import Utils.Txt.EscreverArquivo;
 public class CadastraVenda {
     private Venda venda = new Venda();
 
-    public CadastraVenda(String produto, String cpf, double valor, int quantidade) {
+    public CadastraVenda(String produto,  double valor, int quantidade,String cpf) {
         venda.setProduto(produto);
         venda.setCpf(cpf);
         venda.setValor(valor);
@@ -34,10 +34,5 @@ public class CadastraVenda {
 
         EscreverArquivo arquivo = new EscreverArquivo(database, linha);
         arquivo.escreverArquivo();
-    }
-
-    public static void main(String[] args) {
-        CadastraVenda venda = new CadastraVenda("Café", "123.456.789-00", 2.50, 10);
-        venda.cadastrar();
     }
 }

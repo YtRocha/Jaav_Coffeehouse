@@ -9,6 +9,7 @@ public class Vendas {
 
     JPanel painelCadastrarVendas = new CadastrarVendas().getPainel();
     JPanel painelListarVendas = new ListaVendas().getPainel();
+    JPanel painelFiltrarVendas = new FiltrarVendas().getPainel();
 
     public Vendas() {
         inicializar();
@@ -22,6 +23,7 @@ public class Vendas {
         painel.add(abas);
         abas.addTab("Cadastrar Vendas", painelCadastrarVendas);
         abas.addTab("Listar Vendas", painelListarVendas);
+        abas.addTab("Filtrar Vendas", painelFiltrarVendas);
 
         painel.add(abas);
     }
