@@ -35,8 +35,5 @@ public class LerJSON {
         } catch(ParseException error){
             return "Erro ao utilizar o parser";
         }
-        
-
     }
-
 }

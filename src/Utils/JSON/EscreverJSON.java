@@ -23,6 +23,7 @@ public class EscreverJSON {
         try{
             LerJSON ler = new LerJSON(caminho);
             JSONArray jarray = new JSONArray();
+            ler.lerJSON();
             jarray = ler.getJarray();
             jarray.add(objeto);
             FileWriter json = new FileWriter(caminho);
