@@ -4,37 +4,30 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class LerJSON {
     
-    private JSONObject objeto;
+    private JSONArray jarray;
 
     private String caminho;
 
     private JSONParser parser = new JSONParser();
 
-    private String conteudo;
-
-
     public LerJSON(String caminho) {
         this.caminho = caminho;
     }
 
-    public String getConteudo() {
-        return this.conteudo;
+    public JSONArray getJarray() {
+        return this.jarray;
     }
-
 
     public String lerJSON(){
         try{
-
-            objeto = (JSONObject) = parser.parse(new FileReader(caminho));
-            conteudo = objeto.toString();
-            return conteudo;
-
+            jarray = (JSONArray)parser.parse(new FileReader(caminho));
+            return "Sucesso";
         } catch(FileNotFoundException error){
             return "JSON não encontrado";
         } catch(IOException error){

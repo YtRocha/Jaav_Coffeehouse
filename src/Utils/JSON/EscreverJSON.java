@@ -3,6 +3,7 @@ package Utils.JSON;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class EscreverJSON {
@@ -10,8 +11,7 @@ public class EscreverJSON {
     private String caminho;
 
     private JSONObject objeto;
-
-
+    
     public EscreverJSON(String caminho, JSONObject objeto) {
         this.caminho = caminho;
         this.objeto = objeto;
@@ -21,8 +21,12 @@ public class EscreverJSON {
     public boolean escreverJson(){
 
         try{
-            FileWriter json = new FileWriter(caminho, true);
-            json.write(objeto.toString());
+            LerJSON ler = new LerJSON(caminho);
+            JSONArray jarray = new JSONArray();
+            jarray = ler.getJarray();
+            jarray.add(objeto);
+            FileWriter json = new FileWriter(caminho);
+            json.write(jarray.toString());
             json.close();
             return true;
         } catch(IOException erro){
@@ -37,3 +41,5 @@ public class EscreverJSON {
 
 
 }
+
+
