@@ -7,9 +7,10 @@ public class Clientes {
     JPanel painel = new JPanel( new GridLayout(1,4) );
     JTabbedPane abas = new JTabbedPane();
 
-    JPanel painelCadastrarVendas = new CadastrarClientes().getPainel();
-    JPanel painelExcluirVendas = new ExcluirClientes().getPainel();
-    JPanel painelListarVendas = new ListaClientes().getPainel();
+    JPanel painelCadastrarCliente = new CadastrarClientes().getPainel();
+    JPanel painelExcluirCliente = new ExcluirClientes().getPainel();
+    JPanel painelListarCliente = new ListaClientes().getPainel();
+    JPanel painelListarClientesExcluidos = new ListaClientesExcluidos().getPainel();
 
     public Clientes() {
         inicializar();
@@ -20,9 +21,10 @@ public class Clientes {
     }
 
     public void inicializar(){
-        abas.addTab("Cadastrar clientes", painelCadastrarVendas);
-        abas.addTab("Excluir clientes", painelExcluirVendas);
-        abas.addTab("Listar clientes", painelListarVendas);
+        abas.addTab("Cadastrar clientes", painelCadastrarCliente);
+        abas.addTab("Excluir clientes", painelExcluirCliente);
+        abas.addTab("Listar clientes cadastrados", painelListarCliente);
+        abas.addTab("Listar clientes excluidos", painelListarClientesExcluidos);
 
         painel.add(abas);
     }
