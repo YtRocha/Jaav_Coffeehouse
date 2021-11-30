@@ -2,7 +2,6 @@ package Views.Clientes;
 
 import javax.swing.*;
 
-import Models.Vendas.LerVendas;
 public class ListaClientesExcluidos extends AbaClientes {
     // TODO: implementar model de dados.
     String[][] clientes_mock = {
