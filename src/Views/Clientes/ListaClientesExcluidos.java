@@ -5,7 +5,7 @@ import javax.swing.*;
 import Models.Clientes.LerClientesExcluidos;
 
 public class ListaClientesExcluidos extends AbaClientes {
-    String[][] clientes_excluidos = new LerClientes().dadosClientes();
+    String[][] clientes_excluidos = new LerClientesExcluidos().dadosClientes();
 
     public ListaClientesExcluidos() {
         inicializar();
