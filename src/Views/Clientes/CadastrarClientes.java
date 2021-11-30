@@ -1,6 +1,7 @@
 package Views.Clientes;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Views.Formulario;
+import Models.Clientes.CadastraCliente;
 
 public class CadastrarClientes extends AbaClientes implements Formulario{
     JLabel labelNome = new JLabel("Digite o nome do cliente:");
@@ -60,7 +62,12 @@ public class CadastrarClientes extends AbaClientes implements Formulario{
         botaoCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: Implementar eventos para cadastro de clientes
+                if(campoNome.getText().equals("") || campoCPF.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+                } else {
+                    CadastraCliente cadastra_cliente = new CadastraCliente(campoNome.getText(), campoCPF.getText());
+                    cadastra_cliente.cadastrar();
+                }
             }
         });
     }
