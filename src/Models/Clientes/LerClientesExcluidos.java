@@ -2,9 +2,10 @@ package Models.Clientes;
 
 import java.util.ArrayList;
 
+import Models.Clientes.Interfaces.ILerClientes;
 import Utils.Txt.LerArquivo;
 
-public class LerClientesExcluidos {
+public class LerClientesExcluidos implements ILerClientes {
     LerArquivo clientes = new LerArquivo("src/Database/clientes_excluidos.txt");
 
     public String[][] dadosClientes() {
@@ -18,7 +19,7 @@ public class LerClientesExcluidos {
             String[] dados_cliente = cliente.split("\\|");
             dados.add(dados_cliente);
         }
-        
+
         dados_array = dados.toArray(dados_array);
         return dados_array;
     }

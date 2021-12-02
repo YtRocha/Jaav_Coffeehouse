@@ -1,8 +1,9 @@
 package Models.Clientes;
 
+import Models.Clientes.Interfaces.ICadastraCliente;
 import Utils.Txt.EscreverArquivo;
 
-public class CadastraCliente {
+public class CadastraCliente implements ICadastraCliente {
     private Cliente cliente = new Cliente();
     private String database = "src/Database/clientes.txt";
 
@@ -11,11 +12,22 @@ public class CadastraCliente {
         cliente.setCpf(cpf);
     }
 
-    // TODO: adicionar gerador de ID.
-    public void cadastrar() {
+    public boolean cadastrar() {
         String linha = cliente.getNome() + " | " + cliente.getCpf();
 
-        EscreverArquivo arquivo = new EscreverArquivo(database, linha);
-        arquivo.escreverArquivo();
+        try {
+            EscreverArquivo arquivo = new EscreverArquivo(database, linha);
+            arquivo.escreverArquivo();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Erro ao cadastrar cliente");
+            return false;
+        }
+    }
+
+    @Override
+    public String geraId() {
+        // TODO: implementar gerador de id.
+        return null;
     }
 }
