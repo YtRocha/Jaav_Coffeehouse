@@ -6,7 +6,7 @@ import Models.Clientes.Interfaces.ILerClientes;
 import Utils.Txt.LerArquivo;
 
 public class LerClientesExcluidos implements ILerClientes {
-    LerArquivo clientes = new LerArquivo("src/Database/clientes_excluidos.txt");
+    LerArquivo clientes = new LerArquivo("src/Database/Content/clientes_excluidos.txt");
 
     public String[][] dadosClientes() {
         String[] clientes = this.clientes.lerArquivo().split("\n");

@@ -1,7 +1,7 @@
 package Models.Vendas;
 
+import Database.Database;
 import Models.Vendas.Interfaces.ICadastraVenda;
-import Utils.Txt.EscreverArquivo;
 
 public class CadastraVenda implements ICadastraVenda {
     private Venda venda = new Venda();
@@ -21,19 +21,6 @@ public class CadastraVenda implements ICadastraVenda {
     }
 
     public boolean cadastrar() {
-        String database;
-        String linha;
-
-        if (venda.getCpf() == null) {
-            database = "src\\Database\\vendas.txt";
-            linha = venda.getProduto() + " | " + venda.getValor() + " | " + venda.getQuantidade();
-        } else {
-            database = "src\\Database\\vendas_identificadas.txt";
-            linha = venda.getProduto() + " | " + venda.getValor() + " | " + venda.getQuantidade() + " | "
-                    + venda.getCpf();
-        }
-
-        EscreverArquivo arquivo = new EscreverArquivo(database, linha);
-        return arquivo.escreverArquivo();
+        return Database.cadastraVenda(this.venda);
     }
 }

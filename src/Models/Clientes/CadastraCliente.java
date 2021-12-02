@@ -1,11 +1,10 @@
 package Models.Clientes;
 
+import Database.Database;
 import Models.Clientes.Interfaces.ICadastraCliente;
-import Utils.Txt.EscreverArquivo;
 
 public class CadastraCliente implements ICadastraCliente {
     private Cliente cliente = new Cliente();
-    private String database = "src/Database/clientes.txt";
 
     public CadastraCliente(String nome, String cpf) {
         cliente.setNome(nome);
@@ -13,16 +12,7 @@ public class CadastraCliente implements ICadastraCliente {
     }
 
     public boolean cadastrar() {
-        String linha = cliente.getNome() + " | " + cliente.getCpf();
-
-        try {
-            EscreverArquivo arquivo = new EscreverArquivo(database, linha);
-            arquivo.escreverArquivo();
-            return true;
-        } catch (Exception e) {
-            System.out.println("Erro ao cadastrar cliente");
-            return false;
-        }
+        return Database.cadastraCliente(this.cliente);
     }
 
     @Override
