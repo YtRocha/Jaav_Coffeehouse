@@ -10,18 +10,22 @@ public abstract class Produto implements IProduto {
 
     private Double preco;
 
-    private int quantidade;
+    private String quantidade;
+
+    private String categoria;
+    
 
     /* ---- Construtores ---- */
 
     public Produto() {
     }
 
-    public Produto(Long id, String nome, Double preco, int quantidade) {
+    public Produto(Long id, String nome, Double preco, String quantidade, String categoria) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
+        this.categoria = categoria;
     }
 
     /* ---- Getters e Setters ---- */
@@ -46,28 +50,31 @@ public abstract class Produto implements IProduto {
         this.preco = preco;
     }
 
-    public int getQuantidade() {
+    public String getQuantidade() {
         return this.quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getCategoria(){
+        return this.categoria;
+    }
+
+    public void setCategoria(String categoria){
+        this.categoria = categoria;
     }
 
     /* ---- Metodos ---- */
     // TODO: Implementar corretamente os metodos abaixo
     public boolean retirarDoEstoque(int quantidade) {
-        if (this.getQuantidade() > 0) {
-            if ((this.getQuantidade() - quantidade) < 0) {
-
-            } else
-                this.setQuantidade(this.getQuantidade() - quantidade);
-        }
+        
         return false;
     }
 
     public boolean colocarNoEstoque(int quantidade) {
-        this.setQuantidade(this.getQuantidade() + quantidade);
+        
         return true;
     }
 

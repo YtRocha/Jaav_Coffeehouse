@@ -9,13 +9,6 @@ public class Grao extends Produto{
     private String  torra;
 
 
-    public Grao(String marca, Boolean gourmet, String torra) {
-        this.marca = marca;
-        this.gourmet = gourmet;
-        this.torra = torra;
-    }
-
-
     public String getMarca() {
         return this.marca;
     }
