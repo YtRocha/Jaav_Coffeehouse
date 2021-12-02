@@ -12,6 +12,7 @@ public class Database {
     public static LerArquivo vendas = new LerArquivo("src/Database/Content/vendas.txt");
     public static LerArquivo vendas_identificadas = new LerArquivo("src/Database/Content/vendas_identificadas.txt");
     public static LerArquivo clientes = new LerArquivo("src/Database/Content/clientes.txt");
+    public static LerArquivo clientes_excluidos = new LerArquivo("src/Database/Content/clientes_excluidos.txt");
 
     public static String[][] dadosVendas() {
         String[] _vendas = vendas.lerArquivo().split("\n");
@@ -68,6 +69,22 @@ public class Database {
 
     public static String[][] dadosClientes() {
         String[] _clientes = clientes.lerArquivo().split("\n");
+
+        ArrayList<String[]> dados = new ArrayList<String[]>();
+
+        String[][] dados_array = new String[dados.size()][];
+
+        for (String cliente : _clientes) {
+            String[] dados_cliente = cliente.split("\\|");
+            dados.add(dados_cliente);
+        }
+
+        dados_array = dados.toArray(dados_array);
+        return dados_array;
+    }
+
+    public static String[][] dadosClientesExcluidos() {
+        String[] _clientes = clientes_excluidos.lerArquivo().split("\n");
 
         ArrayList<String[]> dados = new ArrayList<String[]>();
 
