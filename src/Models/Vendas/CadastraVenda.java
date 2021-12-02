@@ -1,11 +1,12 @@
 package Models.Vendas;
 
+import Models.Vendas.Interfaces.ICadastraVenda;
 import Utils.Txt.EscreverArquivo;
 
-public class CadastraVenda {
+public class CadastraVenda implements ICadastraVenda {
     private Venda venda = new Venda();
 
-    public CadastraVenda(String produto,  double valor, int quantidade,String cpf) {
+    public CadastraVenda(String produto, double valor, int quantidade, String cpf) {
         venda.setProduto(produto);
         venda.setCpf(cpf);
         venda.setValor(valor);
@@ -19,7 +20,7 @@ public class CadastraVenda {
         venda.setQuantidade(quantidade);
     }
 
-    public void cadastrar() {
+    public boolean cadastrar() {
         String database;
         String linha;
 
@@ -33,6 +34,6 @@ public class CadastraVenda {
         }
 
         EscreverArquivo arquivo = new EscreverArquivo(database, linha);
-        arquivo.escreverArquivo();
+        return arquivo.escreverArquivo();
     }
 }

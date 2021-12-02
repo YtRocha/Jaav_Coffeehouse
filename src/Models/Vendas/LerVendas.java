@@ -2,9 +2,10 @@ package Models.Vendas;
 
 import java.util.ArrayList;
 
+import Models.Vendas.Interfaces.ILerVendas;
 import Utils.Txt.LerArquivo;
 
-public class LerVendas {
+public class LerVendas implements ILerVendas {
     LerArquivo vendas = new LerArquivo("src/Database/vendas.txt");
     LerArquivo vendas_identificadas = new LerArquivo("src/Database/vendas_identificadas.txt");
 
@@ -32,11 +33,11 @@ public class LerVendas {
         for (String venda : vendas) {
             String[] dados_venda = venda.split("\\|");
 
-            if(filtrar_cpf != null) {
+            if (filtrar_cpf != null) {
                 if (dados_venda[3].trim().equals(filtrar_cpf)) {
                     dados.add(dados_venda);
                 }
-            }else{
+            } else {
                 dados.add(dados_venda);
             }
         }
