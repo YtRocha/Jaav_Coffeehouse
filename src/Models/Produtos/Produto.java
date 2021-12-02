@@ -10,7 +10,7 @@ public abstract class Produto implements IProduto {
 
     private Double preco;
 
-    private String quantidade;
+    private int quantidade;
 
     private String categoria;
     
@@ -20,7 +20,7 @@ public abstract class Produto implements IProduto {
     public Produto() {
     }
 
-    public Produto(Long id, String nome, Double preco, String quantidade, String categoria) {
+    public Produto(Long id, String nome, Double preco, int quantidade, String categoria) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
@@ -50,11 +50,11 @@ public abstract class Produto implements IProduto {
         this.preco = preco;
     }
 
-    public String getQuantidade() {
+    public int getQuantidade() {
         return this.quantidade;
     }
 
-    public void setQuantidade(String quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 

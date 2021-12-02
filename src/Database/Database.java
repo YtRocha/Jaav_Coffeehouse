@@ -7,6 +7,8 @@ import org.json.simple.JSONObject;
 
 import Models.Clientes.Cliente;
 import Models.Produtos.Aperitivo;
+import Models.Produtos.Bebida;
+import Models.Produtos.Grao;
 import Models.Vendas.Venda;
 import Utils.JSON.EscreverJSON;
 import Utils.JSON.LerJSON;
@@ -139,7 +141,7 @@ public class Database {
     }
 
 
-    public static boolean CadastraAperitivo(String nome, Double preco, String quantidade,String categoria, String tamanho){
+    public static boolean CadastraAperitivo(String nome, Double preco, int quantidade,String categoria, String tamanho){
     
         Aperitivo aperitivo = new Aperitivo();
         String database = "src/Database/Content/estoque.json";
@@ -167,6 +169,71 @@ public class Database {
             return false;
         }
         
+    }
+
+    public static boolean CadastraGrao(String nome, Double preco, int quantidade,String categoria, String marca, Boolean gourmet, String torra){
+
+        Grao grao = new Grao();
+        String database = "src/Database/Content/estoque.json";
+
+        try{
+            grao.setNome(nome);
+            grao.setPreco(preco);
+            grao.setQuantidade(quantidade);
+            grao.setCategoria(categoria);
+            grao.setMarca(marca);
+            grao.setGourmet(gourmet);
+            grao.setTorra(torra);
+                
+            JSONObject objeto = new JSONObject();
+            objeto.put("nome", grao.getNome());
+            objeto.put("preco", grao.getPreco());
+            objeto.put("quantidade", grao.getQuantidade());
+            objeto.put("categoria", grao.getCategoria());
+            objeto.put("marca", grao.getMarca());
+            objeto.put("gourmet", grao.getGourmet());
+            objeto.put("torra", grao.getTorra());
+            
+            
+            EscreverJSON escrever = new EscreverJSON(database,  objeto);
+            escrever.escreverJson();
+
+            return true;
+        } catch(Exception e){
+            System.out.println("Erro ao cadastrar produto");
+            return false;
+        }
+
+    }
+
+    public static boolean CadastraBebida(String nome, Double preco, int quantidade,String categoria){
+
+        Bebida bebida = new Bebida();
+        String database = "src/Database/Content/estoque.json";
+
+        try{
+            bebida.setNome(nome);
+            bebida.setPreco(preco);
+            bebida.setQuantidade(quantidade);
+            bebida.setCategoria(categoria);
+            
+            JSONObject objeto = new JSONObject();
+            objeto.put("nome", bebida.getNome());
+            objeto.put("preco", bebida.getPreco());
+            objeto.put("quantidade", bebida.getQuantidade());
+            objeto.put("categoria", bebida.getCategoria());
+            
+            
+            
+            EscreverJSON escrever = new EscreverJSON(database,  objeto);
+            escrever.escreverJson();
+
+            return true;
+        } catch(Exception e){
+            System.out.println("Erro ao cadastrar produto");
+            return false;
+        }
+
     }
 }
 
