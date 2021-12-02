@@ -125,7 +125,18 @@ public class Database {
     }
 
 
+    public static JSONArray  LeProduto(){
     
+        String database = "src/Database/Content/estoque.json";
+
+        
+            LerJSON leitor = new LerJSON(database);
+            leitor.lerJSON();
+            JSONArray jarray = new JSONArray();
+            jarray = leitor.getJarray();
+            return jarray;
+
+    }
 
 
     public static boolean CadastraAperitivo(String nome, Double preco, String quantidade,String categoria, String tamanho){
