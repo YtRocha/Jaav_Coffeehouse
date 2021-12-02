@@ -2,8 +2,14 @@ package Database;
 
 import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import Models.Clientes.Cliente;
+import Models.Produtos.Aperitivo;
 import Models.Vendas.Venda;
+import Utils.JSON.EscreverJSON;
+import Utils.JSON.LerJSON;
 import Utils.Txt.EscreverArquivo;
 import Utils.Txt.LerArquivo;
 
@@ -117,4 +123,50 @@ public class Database {
             return false;
         }
     }
+
+
+    public static JSONArray  LeProduto(){
+    
+        String database = "src/Database/Content/estoque.json";
+
+        
+            LerJSON leitor = new LerJSON(database);
+            leitor.lerJSON();
+            JSONArray jarray = new JSONArray();
+            jarray = leitor.getJarray();
+            return jarray;
+
+    }
+
+
+    public static boolean CadastraAperitivo(String nome, Double preco, String quantidade,String categoria, String tamanho){
+    
+        Aperitivo aperitivo = new Aperitivo();
+        String database = "src/Database/Content/estoque.json";
+
+        try{
+            aperitivo.setNome(nome);
+            aperitivo.setPreco(preco);
+            aperitivo.setQuantidade(quantidade);
+            aperitivo.setCategoria(categoria);
+            aperitivo.setTamanho(tamanho);
+                
+            JSONObject objeto = new JSONObject();
+            objeto.put("nome", aperitivo.getNome());
+            objeto.put("preco", aperitivo.getPreco());
+            objeto.put("quantidade", aperitivo.getQuantidade());
+            objeto.put("categoria", aperitivo.getCategoria());
+            objeto.put("tamanho", aperitivo.getTamanho());
+        
+            EscreverJSON escrever = new EscreverJSON(database,  objeto);
+            escrever.escreverJson();
+
+            return true;
+        } catch(Exception e){
+            System.out.println("Erro ao cadastrar produto");
+            return false;
+        }
+        
+    }
 }
+
