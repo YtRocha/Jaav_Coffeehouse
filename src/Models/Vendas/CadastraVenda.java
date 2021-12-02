@@ -2,6 +2,7 @@ package Models.Vendas;
 
 import Database.Database;
 import Models.Vendas.Interfaces.ICadastraVenda;
+import Utils.Validators.Validator;
 
 public class CadastraVenda implements ICadastraVenda {
     private Venda venda = new Venda();
@@ -21,6 +22,11 @@ public class CadastraVenda implements ICadastraVenda {
     }
 
     public boolean cadastrar() {
-        return Database.cadastraVenda(this.venda);
+        if (venda.getProduto() != null &&
+                venda.getValor() > 0 &&
+                Validator.isCpfValid(venda.getCpf())) {
+            return Database.cadastraVenda(this.venda);
+        }
+        return false;
     }
 }
