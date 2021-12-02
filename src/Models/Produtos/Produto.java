@@ -1,6 +1,8 @@
 package Models.Produtos;
 
-public abstract class Produto {
+import Models.Produtos.Interfaces.IProduto;
+
+public abstract class Produto implements IProduto {
 
     private Long id;
 
@@ -9,7 +11,6 @@ public abstract class Produto {
     private Double preco;
 
     private int quantidade;
-    
 
     /* ---- Construtores ---- */
 
@@ -52,22 +53,22 @@ public abstract class Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    
+
     /* ---- Metodos ---- */
+    // TODO: Implementar corretamente os metodos abaixo
+    public boolean retirarDoEstoque(int quantidade) {
+        if (this.getQuantidade() > 0) {
+            if ((this.getQuantidade() - quantidade) < 0) {
 
-    public void retirarDoEstoque(int quantidade){
-        if(this.getQuantidade() > 0){
-            if((this.getQuantidade()-quantidade) < 0){
-
-            }
-            else
-                this.setQuantidade(this.getQuantidade()-quantidade);
+            } else
+                this.setQuantidade(this.getQuantidade() - quantidade);
         }
+        return false;
     }
 
-    public void colocarNoEstoque(int quantidade){
-        this.setQuantidade(this.getQuantidade()+quantidade);
+    public boolean colocarNoEstoque(int quantidade) {
+        this.setQuantidade(this.getQuantidade() + quantidade);
+        return true;
     }
-
 
 }
