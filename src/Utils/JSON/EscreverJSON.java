@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import Utils.Txt.EscreverArquivo;
+
 
 public class EscreverJSON {
 
@@ -24,10 +24,6 @@ public class EscreverJSON {
         try {
             LerJSON ler = new LerJSON(caminho);
             JSONArray jarray = new JSONArray();
-            if (jarray.isEmpty()) {
-                EscreverArquivo escrever = new EscreverArquivo(caminho, "[]");
-                escrever.escreverArquivo();
-            }
             ler.lerJSON();
             jarray = ler.getJarray();
             jarray.add(objeto);
