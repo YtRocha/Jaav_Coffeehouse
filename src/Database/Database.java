@@ -1,9 +1,12 @@
 package Database;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import Models.Clientes.Cliente;
 import Models.Produtos.Aperitivo;
@@ -140,8 +143,30 @@ public class Database {
 
     }
 
-    public static boolean excluiProduto(){
-        return true;
+    public static boolean excluiProduto(String nome){
+        JSONArray jarray = leProduto();
+        String database = "src/Database/Content/estoque.json";
+        int len = jarray.size();
+        JSONArray newJarray = new JSONArray();
+        try{
+            for(int elemento = 0;elemento<len; elemento++){
+                if(jarray.get(elemento).toString().toLowerCase().contains(nome) == false){
+                    newJarray.add(jarray.get(elemento));
+                    
+                }
+            }
+            FileWriter json = new FileWriter(database);
+            json.write(newJarray.toString());
+            json.close();
+            return true;
+        }catch (IOException erro) {
+            System.out.println("Erro ao escrever o arquivo.");
+            System.out.println(erro.getMessage());
+            return false;
+        }
+            
+        
+        
     }
 
     public static boolean cadastraAperitivo(Aperitivo aperitivo){
