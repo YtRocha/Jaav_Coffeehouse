@@ -17,7 +17,7 @@ public class CadastraBebida implements ICadastraProduto{
 
     @Override
     public boolean cadastrar() {
-        return Database.CadastraBebida(this.bebida);
+        return Database.cadastraBebida(this.bebida);
     }
 
     @Override

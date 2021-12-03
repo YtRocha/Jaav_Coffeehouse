@@ -127,7 +127,7 @@ public class Database {
     }
 
 
-    public static JSONArray  LeProduto(){
+    public static JSONArray  leProduto(){
     
         String database = "src/Database/Content/estoque.json";
 
@@ -140,8 +140,11 @@ public class Database {
 
     }
 
+    public static boolean excluiProduto(){
+        return true;
+    }
 
-    public static boolean CadastraAperitivo(Aperitivo aperitivo){
+    public static boolean cadastraAperitivo(Aperitivo aperitivo){
     
         String database = "src/Database/Content/estoque.json";
 
@@ -164,7 +167,7 @@ public class Database {
         
     }
 
-    public static boolean CadastraGrao(Grao grao){
+    public static boolean cadastraGrao(Grao grao){
 
         String database = "src/Database/Content/estoque.json";
 
@@ -190,7 +193,7 @@ public class Database {
 
     }
 
-    public static boolean CadastraBebida(Bebida bebida){
+    public static boolean cadastraBebida(Bebida bebida){
 
         String database = "src/Database/Content/estoque.json";
 

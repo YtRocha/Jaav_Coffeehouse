@@ -20,7 +20,7 @@ public class CadastraGrao implements ICadastraProduto {
 
     @Override
     public boolean cadastrar() {
-        return Database.CadastraGrao(this.grao);
+        return Database.cadastraGrao(this.grao);
     }
 
     @Override

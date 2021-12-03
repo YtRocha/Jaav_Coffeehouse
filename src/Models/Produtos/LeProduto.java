@@ -9,7 +9,7 @@ public class LeProduto implements ILeProduto{
 
     @Override
     public JSONArray lerEstoque() {
-        return Database.LeProduto();
+        return Database.leProduto();
     }
     
 }
