@@ -2,6 +2,9 @@ package Views.Clientes;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import Models.Clientes.ExcluiCliente;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -16,7 +19,7 @@ import java.awt.event.ActionListener;
 
 import Views.Formulario;
 
-public class ExcluirClientes extends AbaClientes implements Formulario{
+public class ExcluirClientes extends AbaClientes implements Formulario {
     JLabel labelCPF = new JLabel("Digite o CPF do cliente a ser excluído.");
     JTextField campoCPF = new JTextField(10);
 
@@ -55,7 +58,8 @@ public class ExcluirClientes extends AbaClientes implements Formulario{
         botaoExcluir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: Implementar eventos para excluir cliente dado CPF.
+                ExcluiCliente excluiCliente = new ExcluiCliente(campoCPF.getText());
+                excluiCliente.excluir();
             }
         });
     }
