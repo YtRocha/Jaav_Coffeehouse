@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 import Views.Formulario;
 import Models.Clientes.CadastraCliente;
 
-public class CadastrarClientes extends AbaClientes implements Formulario{
+public class CadastrarClientes extends AbaClientes implements Formulario {
     JLabel labelNome = new JLabel("Digite o nome do cliente:");
     JTextField campoNome = new JTextField(10);
 
@@ -62,11 +62,15 @@ public class CadastrarClientes extends AbaClientes implements Formulario{
         botaoCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(campoNome.getText().equals("") || campoCPF.getText().equals("")) {
+                if (campoNome.getText().equals("") || campoCPF.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
                 } else {
-                    CadastraCliente cadastra_cliente = new CadastraCliente(campoNome.getText(), campoCPF.getText());
-                    cadastra_cliente.cadastrar();
+                    try {
+                        CadastraCliente cadastra_cliente = new CadastraCliente(campoNome.getText(), campoCPF.getText());
+                        cadastra_cliente.cadastrar();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente: " + ex.getMessage());
+                    }
                 }
             }
         });
