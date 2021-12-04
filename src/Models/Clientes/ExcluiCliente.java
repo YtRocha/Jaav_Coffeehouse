@@ -1,13 +1,18 @@
 package Models.Clientes;
 
+import Database.Database;
 import Models.Clientes.Interfaces.IExcluiCliente;
 
 public class ExcluiCliente implements IExcluiCliente {
 
-    @Override
-    public boolean excluir() {
-        // TODO Auto-generated method stub
-        return false;
+    private String cpf;
+
+    public ExcluiCliente(String cpf) {
+        this.cpf = cpf;
     }
 
+    @Override
+    public boolean excluir() {
+        return Database.excluiCliente(cpf);
+    }
 }
