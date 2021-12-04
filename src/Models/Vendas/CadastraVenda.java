@@ -9,6 +9,11 @@ public class CadastraVenda implements ICadastraVenda {
 
     public CadastraVenda(String produto, double valor, int quantidade, String cpf) {
         venda.setProduto(produto);
+        if (Validator.isCpfValid(cpf)) {
+            venda.setCpf(cpf);
+        } else {
+            throw new IllegalArgumentException("CPF inválido");
+        }
         venda.setCpf(cpf);
         venda.setValor(valor);
         venda.setQuantidade(quantidade);
@@ -23,8 +28,7 @@ public class CadastraVenda implements ICadastraVenda {
 
     public boolean cadastrar() {
         if (venda.getProduto() != null &&
-                venda.getValor() > 0 &&
-                Validator.isCpfValid(venda.getCpf())) {
+                venda.getValor() > 0) {
             return Database.cadastraVenda(this.venda);
         }
         return false;
