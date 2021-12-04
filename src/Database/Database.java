@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import Models.Clientes.Cliente;
 import Models.Produtos.Aperitivo;
@@ -143,14 +144,17 @@ public class Database {
 
     }
 
-    public static boolean excluiProduto(String nome){
+    public static boolean excluiProduto(String codigo){
         JSONArray jarray = leProduto();
         String database = "src/Database/Content/estoque.json";
         int len = jarray.size();
         JSONArray newJarray = new JSONArray();
+        JSONObject objeto = new JSONObject();
+        JSONParser parser = new JSONParser();
         try{
             for(int elemento = 0;elemento<len; elemento++){
-                if(jarray.get(elemento).toString().toLowerCase().contains(nome) == false){
+                objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
+                if(objeto.containsValue(codigo) == false){
                     newJarray.add(jarray.get(elemento));
                     
                 }
@@ -163,7 +167,9 @@ public class Database {
             System.out.println("Erro ao escrever o arquivo.");
             System.out.println(erro.getMessage());
             return false;
-        }
+        }catch(ParseException erro){
+            System.out.println("Erro ao utilizar o parser");
+        } return false;
             
         
         
@@ -175,6 +181,7 @@ public class Database {
 
         try{
             JSONObject objeto = new JSONObject();
+            objeto.put("codigo", aperitivo.getCodigo());
             objeto.put("nome", aperitivo.getNome());
             objeto.put("preco", aperitivo.getPreco());
             objeto.put("quantidade", aperitivo.getQuantidade());
@@ -198,6 +205,7 @@ public class Database {
 
         try{     
             JSONObject objeto = new JSONObject();
+            objeto.put("codigo", grao.getCodigo());
             objeto.put("nome", grao.getNome());
             objeto.put("preco", grao.getPreco());
             objeto.put("quantidade", grao.getQuantidade());
@@ -224,6 +232,7 @@ public class Database {
 
         try{
             JSONObject objeto = new JSONObject();
+            objeto.put("codigo", bebida.getCodigo());
             objeto.put("nome", bebida.getNome());
             objeto.put("preco", bebida.getPreco());
             objeto.put("quantidade", bebida.getQuantidade());

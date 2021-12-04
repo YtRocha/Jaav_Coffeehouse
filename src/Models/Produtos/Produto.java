@@ -6,6 +6,8 @@ public abstract class Produto implements IProduto {
 
     private String id;
 
+    private String codigo;
+
     private String nome;
 
     private Double preco;
@@ -20,8 +22,9 @@ public abstract class Produto implements IProduto {
     public Produto() {
     }
 
-    public Produto(String id, String nome, Double preco, int quantidade, String categoria) {
+    public Produto(String id, String codigo, String nome, Double preco, int quantidade, String categoria) {
         this.id = id;
+        this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
@@ -30,10 +33,18 @@ public abstract class Produto implements IProduto {
 
     /* ---- Getters e Setters ---- */
 
+
     public String getId() {
         return this.id;
     }
 
+    public String getCodigo(){
+        return this.codigo;
+    }
+
+    public void setCodigo(String codigo){
+        this.codigo = codigo;
+    }
 
     public String getNome() {
         return this.nome;

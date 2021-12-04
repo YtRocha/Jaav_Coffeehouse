@@ -8,7 +8,8 @@ public class CadastraBebida implements ICadastraProduto{
 
 
 
-    public CadastraBebida(String nome, Double preco, int quantidade,String categoria) {
+    public CadastraBebida(String codigo, String nome, Double preco, int quantidade,String categoria) {
+        bebida.setCodigo(codigo);
         bebida.setNome(nome);
         bebida.setPreco(preco);
         bebida.setQuantidade(quantidade);
