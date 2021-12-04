@@ -1,6 +1,7 @@
 package Views.Vendas;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -75,14 +76,19 @@ public class CadastrarVendas extends AbaVendas {
                 int quantidade = Integer.parseInt(campoQuantidade.getText());
                 double valor = Double.parseDouble(campoValor.getText());
 
-                if(!cpf.equals("")){
-                    CadastraVenda cadastrarVendas = new CadastraVenda(produto,valor,quantidade,cpf);
-                    cadastrarVendas.cadastrar();
+                if (!cpf.equals("")) {
+                    try {
+
+                        CadastraVenda cadastrarVendas = new CadastraVenda(produto, valor, quantidade, cpf);
+                        cadastrarVendas.cadastrar();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "CPF inválido!");
+                    }
                 } else {
-                    CadastraVenda cadastrarVendas = new CadastraVenda(produto,valor,quantidade);
+                    CadastraVenda cadastrarVendas = new CadastraVenda(produto, valor, quantidade);
                     cadastrarVendas.cadastrar();
                 }
-                
+
             }
         });
     }

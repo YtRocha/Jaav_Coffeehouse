@@ -13,6 +13,6 @@ public class ExcluiCliente implements IExcluiCliente {
 
     @Override
     public boolean excluir() {
-        return Database.excluiCliente(cpf);
+        return Database.excluiCliente(cpf.trim());
     }
 }
