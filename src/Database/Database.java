@@ -1,9 +1,13 @@
 package Database;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import Models.Clientes.Cliente;
 import Models.Produtos.Aperitivo;
@@ -161,8 +165,8 @@ public class Database {
         }
     }
 
-    public static JSONArray LeProduto() {
-
+    public static JSONArray  leProduto(){
+    
         String database = "src/Database/Content/estoque.json";
 
         LerJSON leitor = new LerJSON(database);
@@ -173,20 +177,44 @@ public class Database {
 
     }
 
-    public static boolean CadastraAperitivo(String nome, Double preco, int quantidade, String categoria,
-            String tamanho) {
+    public static boolean excluiProduto(String codigo){
+        JSONArray jarray = leProduto();
+        String database = "src/Database/Content/estoque.json";
+        int len = jarray.size();
+        JSONArray newJarray = new JSONArray();
+        JSONObject objeto = new JSONObject();
+        JSONParser parser = new JSONParser();
+        try{
+            for(int elemento = 0;elemento<len; elemento++){
+                objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
+                if(objeto.containsValue(codigo) == false){
+                    newJarray.add(jarray.get(elemento));
+                    
+                }
+            }
+            FileWriter json = new FileWriter(database);
+            json.write(newJarray.toString());
+            json.close();
+            return true;
+        }catch (IOException erro) {
+            System.out.println("Erro ao escrever o arquivo.");
+            System.out.println(erro.getMessage());
+            return false;
+        }catch(ParseException erro){
+            System.out.println("Erro ao utilizar o parser");
+        } return false;
+            
+        
+        
+    }
 
-        Aperitivo aperitivo = new Aperitivo();
+    public static boolean cadastraAperitivo(Aperitivo aperitivo){
+    
         String database = "src/Database/Content/estoque.json";
 
-        try {
-            aperitivo.setNome(nome);
-            aperitivo.setPreco(preco);
-            aperitivo.setQuantidade(quantidade);
-            aperitivo.setCategoria(categoria);
-            aperitivo.setTamanho(tamanho);
-
+        try{
             JSONObject objeto = new JSONObject();
+            objeto.put("codigo", aperitivo.getCodigo());
             objeto.put("nome", aperitivo.getNome());
             objeto.put("preco", aperitivo.getPreco());
             objeto.put("quantidade", aperitivo.getQuantidade());
@@ -204,22 +232,13 @@ public class Database {
 
     }
 
-    public static boolean CadastraGrao(String nome, Double preco, int quantidade, String categoria, String marca,
-            Boolean gourmet, String torra) {
+    public static boolean cadastraGrao(Grao grao){
 
-        Grao grao = new Grao();
         String database = "src/Database/Content/estoque.json";
 
-        try {
-            grao.setNome(nome);
-            grao.setPreco(preco);
-            grao.setQuantidade(quantidade);
-            grao.setCategoria(categoria);
-            grao.setMarca(marca);
-            grao.setGourmet(gourmet);
-            grao.setTorra(torra);
-
+        try{     
             JSONObject objeto = new JSONObject();
+            objeto.put("codigo", grao.getCodigo());
             objeto.put("nome", grao.getNome());
             objeto.put("preco", grao.getPreco());
             objeto.put("quantidade", grao.getQuantidade());
@@ -239,18 +258,13 @@ public class Database {
 
     }
 
-    public static boolean CadastraBebida(String nome, Double preco, int quantidade, String categoria) {
+    public static boolean cadastraBebida(Bebida bebida){
 
-        Bebida bebida = new Bebida();
         String database = "src/Database/Content/estoque.json";
 
-        try {
-            bebida.setNome(nome);
-            bebida.setPreco(preco);
-            bebida.setQuantidade(quantidade);
-            bebida.setCategoria(categoria);
-
+        try{
             JSONObject objeto = new JSONObject();
+            objeto.put("codigo", bebida.getCodigo());
             objeto.put("nome", bebida.getNome());
             objeto.put("preco", bebida.getPreco());
             objeto.put("quantidade", bebida.getQuantidade());

@@ -4,7 +4,9 @@ import Models.Produtos.Interfaces.IProduto;
 
 public abstract class Produto implements IProduto {
 
-    private Long id;
+    private String id;
+
+    private String codigo;
 
     private String nome;
 
@@ -20,8 +22,9 @@ public abstract class Produto implements IProduto {
     public Produto() {
     }
 
-    public Produto(Long id, String nome, Double preco, int quantidade, String categoria) {
+    public Produto(String id, String codigo, String nome, Double preco, int quantidade, String categoria) {
         this.id = id;
+        this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
@@ -30,8 +33,17 @@ public abstract class Produto implements IProduto {
 
     /* ---- Getters e Setters ---- */
 
-    public Long getId() {
+
+    public String getId() {
         return this.id;
+    }
+
+    public String getCodigo(){
+        return this.codigo;
+    }
+
+    public void setCodigo(String codigo){
+        this.codigo = codigo;
     }
 
     public String getNome() {
