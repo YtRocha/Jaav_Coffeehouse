@@ -165,13 +165,8 @@ public class Database {
         }
     }
 
-<<<<<<< HEAD
     public static JSONArray  leProduto(){
     
-=======
-    public static JSONArray LeProduto() {
-
->>>>>>> 6cd07578481aa372e7e85c2ebb1e08c1bd0ada94
         String database = "src/Database/Content/estoque.json";
 
         LerJSON leitor = new LerJSON(database);
@@ -182,7 +177,6 @@ public class Database {
 
     }
 
-<<<<<<< HEAD
     public static boolean excluiProduto(String codigo){
         JSONArray jarray = leProduto();
         String database = "src/Database/Content/estoque.json";
@@ -219,21 +213,6 @@ public class Database {
         String database = "src/Database/Content/estoque.json";
 
         try{
-=======
-    public static boolean CadastraAperitivo(String nome, Double preco, int quantidade, String categoria,
-            String tamanho) {
-
-        Aperitivo aperitivo = new Aperitivo();
-        String database = "src/Database/Content/estoque.json";
-
-        try {
-            aperitivo.setNome(nome);
-            aperitivo.setPreco(preco);
-            aperitivo.setQuantidade(quantidade);
-            aperitivo.setCategoria(categoria);
-            aperitivo.setTamanho(tamanho);
-
->>>>>>> 6cd07578481aa372e7e85c2ebb1e08c1bd0ada94
             JSONObject objeto = new JSONObject();
             objeto.put("codigo", aperitivo.getCodigo());
             objeto.put("nome", aperitivo.getNome());
@@ -253,28 +232,11 @@ public class Database {
 
     }
 
-<<<<<<< HEAD
     public static boolean cadastraGrao(Grao grao){
-=======
-    public static boolean CadastraGrao(String nome, Double preco, int quantidade, String categoria, String marca,
-            Boolean gourmet, String torra) {
->>>>>>> 6cd07578481aa372e7e85c2ebb1e08c1bd0ada94
 
         String database = "src/Database/Content/estoque.json";
 
-<<<<<<< HEAD
         try{     
-=======
-        try {
-            grao.setNome(nome);
-            grao.setPreco(preco);
-            grao.setQuantidade(quantidade);
-            grao.setCategoria(categoria);
-            grao.setMarca(marca);
-            grao.setGourmet(gourmet);
-            grao.setTorra(torra);
-
->>>>>>> 6cd07578481aa372e7e85c2ebb1e08c1bd0ada94
             JSONObject objeto = new JSONObject();
             objeto.put("codigo", grao.getCodigo());
             objeto.put("nome", grao.getNome());
@@ -296,24 +258,11 @@ public class Database {
 
     }
 
-<<<<<<< HEAD
     public static boolean cadastraBebida(Bebida bebida){
-=======
-    public static boolean CadastraBebida(String nome, Double preco, int quantidade, String categoria) {
->>>>>>> 6cd07578481aa372e7e85c2ebb1e08c1bd0ada94
 
         String database = "src/Database/Content/estoque.json";
 
-<<<<<<< HEAD
         try{
-=======
-        try {
-            bebida.setNome(nome);
-            bebida.setPreco(preco);
-            bebida.setQuantidade(quantidade);
-            bebida.setCategoria(categoria);
-
->>>>>>> 6cd07578481aa372e7e85c2ebb1e08c1bd0ada94
             JSONObject objeto = new JSONObject();
             objeto.put("codigo", bebida.getCodigo());
             objeto.put("nome", bebida.getNome());
@@ -331,8 +280,4 @@ public class Database {
         }
 
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 6cd07578481aa372e7e85c2ebb1e08c1bd0ada94
