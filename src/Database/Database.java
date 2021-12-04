@@ -2,7 +2,9 @@ package Database;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -87,8 +89,10 @@ public class Database {
         String[][] dados_array = new String[dados.size()][];
 
         for (String cliente : _clientes) {
-            String[] dados_cliente = cliente.split("\\|");
-            dados.add(dados_cliente);
+            if (!cliente.equals("")) {
+                String[] dados_cliente = cliente.split("\\|");
+                dados.add(dados_cliente);
+            }
         }
 
         dados_array = dados.toArray(dados_array);
@@ -103,8 +107,10 @@ public class Database {
         String[][] dados_array = new String[dados.size()][];
 
         for (String cliente : _clientes) {
-            String[] dados_cliente = cliente.split("\\|");
-            dados.add(dados_cliente);
+            if (!cliente.equals("")) {
+                String[] dados_cliente = cliente.split("\\|");
+                dados.add(dados_cliente);
+            }
         }
 
         dados_array = dados.toArray(dados_array);
@@ -120,9 +126,12 @@ public class Database {
         String cliente_excluido = "";
 
         for (String[] cliente : clientes) {
+            String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+
             if (cliente.length > 1) {
                 if (cliente[2].trim().equals(cpf)) {
-                    cliente_excluido = cliente[0].trim() + " | " + cliente[1].trim() + " | " + cliente[2].trim();
+                    cliente_excluido = cliente[0].trim() + " | " + cliente[1].trim() + " | " + cliente[2].trim() + " | "
+                            + timeStamp;
                 } else {
                     clientes_filtrados.add(cliente);
                 }
@@ -165,8 +174,8 @@ public class Database {
         }
     }
 
-    public static JSONArray  leProduto(){
-    
+    public static JSONArray leProduto() {
+
         String database = "src/Database/Content/estoque.json";
 
         LerJSON leitor = new LerJSON(database);
@@ -177,42 +186,41 @@ public class Database {
 
     }
 
-    public static boolean excluiProduto(String codigo){
+    public static boolean excluiProduto(String codigo) {
         JSONArray jarray = leProduto();
         String database = "src/Database/Content/estoque.json";
         int len = jarray.size();
         JSONArray newJarray = new JSONArray();
         JSONObject objeto = new JSONObject();
         JSONParser parser = new JSONParser();
-        try{
-            for(int elemento = 0;elemento<len; elemento++){
-                objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
-                if(objeto.containsValue(codigo) == false){
+        try {
+            for (int elemento = 0; elemento < len; elemento++) {
+                objeto = (JSONObject) parser.parse(jarray.get(elemento).toString());
+                if (objeto.containsValue(codigo) == false) {
                     newJarray.add(jarray.get(elemento));
-                    
+
                 }
             }
             FileWriter json = new FileWriter(database);
             json.write(newJarray.toString());
             json.close();
             return true;
-        }catch (IOException erro) {
+        } catch (IOException erro) {
             System.out.println("Erro ao escrever o arquivo.");
             System.out.println(erro.getMessage());
             return false;
-        }catch(ParseException erro){
+        } catch (ParseException erro) {
             System.out.println("Erro ao utilizar o parser");
-        } return false;
-            
-        
-        
+        }
+        return false;
+
     }
 
-    public static boolean cadastraAperitivo(Aperitivo aperitivo){
-    
+    public static boolean cadastraAperitivo(Aperitivo aperitivo) {
+
         String database = "src/Database/Content/estoque.json";
 
-        try{
+        try {
             JSONObject objeto = new JSONObject();
             objeto.put("codigo", aperitivo.getCodigo());
             objeto.put("nome", aperitivo.getNome());
@@ -232,11 +240,11 @@ public class Database {
 
     }
 
-    public static boolean cadastraGrao(Grao grao){
+    public static boolean cadastraGrao(Grao grao) {
 
         String database = "src/Database/Content/estoque.json";
 
-        try{     
+        try {
             JSONObject objeto = new JSONObject();
             objeto.put("codigo", grao.getCodigo());
             objeto.put("nome", grao.getNome());
@@ -258,11 +266,11 @@ public class Database {
 
     }
 
-    public static boolean cadastraBebida(Bebida bebida){
+    public static boolean cadastraBebida(Bebida bebida) {
 
         String database = "src/Database/Content/estoque.json";
 
-        try{
+        try {
             JSONObject objeto = new JSONObject();
             objeto.put("codigo", bebida.getCodigo());
             objeto.put("nome", bebida.getNome());
