@@ -174,6 +174,39 @@ public class Database {
         }
     }
 
+    public static boolean alteraQuantidadeProduto(String codigo, Integer quantidade, boolean somar){
+        JSONArray jarray = leProduto();
+        String database = "src/Database/Content/estoque.json";
+        int len = jarray.size();
+        JSONObject objeto = new JSONObject();
+        JSONParser parser = new JSONParser();
+        try{
+            for(int elemento = 0; elemento<len; elemento++){
+                objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
+                if(objeto.containsValue(codigo) == true){
+                    if(somar == true)
+                    objeto.replace("quantidade",objeto.get("quantidade"), Integer.parseInt(objeto.get("quantidade").toString()) + quantidade);
+                    else
+                    objeto.replace("quantidade",objeto.get("quantidade"), Integer.parseInt(objeto.get("quantidade").toString()) - quantidade);
+                
+                    jarray.set(elemento, objeto);
+                } 
+
+            }
+            FileWriter json = new FileWriter(database);
+            json.write(jarray.toString());
+            json.close();
+            return true;
+        }catch(IOException erro){
+            System.out.println("Erro ao escrever o arquivo.");
+            System.out.println(erro.getMessage());
+            return false;
+        }catch(ParseException erro){
+            System.out.println("Erro ao utilizar o parser");
+        }    
+        return false;
+    }
+
     public static JSONArray leProduto() {
 
         String database = "src/Database/Content/estoque.json";
