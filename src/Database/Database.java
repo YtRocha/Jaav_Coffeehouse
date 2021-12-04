@@ -174,7 +174,7 @@ public class Database {
         }
     }
 
-    public static boolean aumentaQuantidadeProduto(String codigo, Integer quantidade){
+    public static boolean alteraQuantidadeProduto(String codigo, Integer quantidade, boolean somar){
         JSONArray jarray = leProduto();
         String database = "src/Database/Content/estoque.json";
         int len = jarray.size();
@@ -184,7 +184,11 @@ public class Database {
             for(int elemento = 0; elemento<len; elemento++){
                 objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
                 if(objeto.containsValue(codigo) == true){
+                    if(somar == true)
                     objeto.replace("quantidade",objeto.get("quantidade"), Integer.parseInt(objeto.get("quantidade").toString()) + quantidade);
+                    else
+                    objeto.replace("quantidade",objeto.get("quantidade"), Integer.parseInt(objeto.get("quantidade").toString()) - quantidade);
+                
                     jarray.set(elemento, objeto);
                 } 
 
