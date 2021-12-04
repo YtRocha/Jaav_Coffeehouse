@@ -111,8 +111,43 @@ public class Database {
         return dados_array;
     }
 
-    // TODO: Implementar metodo para excluir cliente
-    public static boolean excluiCliente() {
+    public static boolean excluiCliente(String cpf) {
+        String[][] clientes = dadosClientes();
+
+        ArrayList<String[]> clientes_filtrados = new ArrayList<String[]>();
+        String[][] clientes_filtrados_array = new String[clientes_filtrados.size()][];
+
+        String cliente_excluido = "";
+
+        for (String[] cliente : clientes) {
+            if (cliente.length > 1) {
+                if (cliente[2].trim().equals(cpf)) {
+                    cliente_excluido = cliente[0].trim() + " | " + cliente[1].trim() + " | " + cliente[2].trim();
+                } else {
+                    clientes_filtrados.add(cliente);
+                }
+            }
+        }
+
+        EscreverArquivo clientes_excluidos_arquivo = new EscreverArquivo("src/Database/Content/clientes_excluidos.txt",
+                cliente_excluido);
+        clientes_excluidos_arquivo.escreverArquivo();
+
+        clientes_filtrados_array = clientes_filtrados.toArray(clientes_filtrados_array);
+
+        System.out.println(clientes_filtrados.size());
+
+        String db = "src/Database/Content/clientes.txt";
+
+        EscreverArquivo clientes_arquivo = new EscreverArquivo(db, "");
+        clientes_arquivo.limparArquivo();
+
+        for (String[] cliente : clientes_filtrados_array) {
+            clientes_arquivo = new EscreverArquivo(db,
+                    (cliente[0].trim() + " | " + cliente[1].trim() + " | " + cliente[2].trim()));
+            clientes_arquivo.escreverArquivo();
+        }
+
         return true;
     }
 
@@ -129,7 +164,6 @@ public class Database {
             return false;
         }
     }
-
 
     public static JSONArray  leProduto(){
     
@@ -251,4 +285,3 @@ public class Database {
 
     }
 }
-
