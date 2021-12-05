@@ -1,8 +1,6 @@
 package Models.Produtos;
 
-import Models.Produtos.Interfaces.IProduto;
-
-public abstract class Produto implements IProduto {
+public abstract class Produto{
 
     private String id;
 
@@ -76,17 +74,6 @@ public abstract class Produto implements IProduto {
 
     public void setCategorias(String categorias){
         this.categorias = categorias;
-    }
-
-    /* ---- Metodos ---- */
-    public boolean retirarDoEstoque(int quantidade) {
-        
-        return false;
-    }
-
-    public boolean colocarNoEstoque(int quantidade) {
-        
-        return true;
     }
 
 }
