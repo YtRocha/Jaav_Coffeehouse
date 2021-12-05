@@ -12,28 +12,28 @@ public class LerArquivo {
     public LerArquivo() {
     }
 
-    public LerArquivo(String caminho){
+    public LerArquivo(String caminho) {
         this.caminho = caminho;
         this.conteudo = lerArquivo();
     }
 
     /*
-        Ao utilizar o método, usar caminho relativo.
-        Retorna string do conteúdo do arquivo de texto.
-    */
+     * Ao utilizar o método, usar caminho relativo.
+     * Retorna string do conteúdo do arquivo de texto.
+     */
     public String lerArquivo() {
         try {
             StringBuilder saida = new StringBuilder();
             BufferedReader buffered = new BufferedReader(new FileReader(caminho));
 
-            try{
+            try {
                 String linha = buffered.readLine();
 
                 while (linha != null) {
                     saida.append(linha + "\n");
                     linha = buffered.readLine();
                 }
-        
+
                 buffered.close();
                 return saida.toString();
 
@@ -45,10 +45,10 @@ public class LerArquivo {
         } catch (FileNotFoundException err) {
             System.out.println("Arquivo não encontrado.");
             return null;
-        } 
+        }
     }
 
-    public String getConteudo(){
+    public String getConteudo() {
         return this.conteudo;
     }
 }

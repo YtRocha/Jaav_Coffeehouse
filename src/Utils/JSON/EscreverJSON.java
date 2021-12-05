@@ -6,8 +6,6 @@ import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-
-
 public class EscreverJSON {
 
     private String caminho;

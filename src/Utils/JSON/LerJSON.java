@@ -9,7 +9,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class LerJSON {
-    
+
     private JSONArray jarray;
 
     private String caminho;
@@ -24,15 +24,15 @@ public class LerJSON {
         return this.jarray;
     }
 
-    public String lerJSON(){
-        try{
-            jarray = (JSONArray)parser.parse(new FileReader(caminho));
+    public String lerJSON() {
+        try {
+            jarray = (JSONArray) parser.parse(new FileReader(caminho));
             return "Sucesso";
-        } catch(FileNotFoundException error){
+        } catch (FileNotFoundException error) {
             return "JSON não encontrado";
-        } catch(IOException error){
-            return"Erro ao ler JSON";
-        } catch(ParseException error){
+        } catch (IOException error) {
+            return "Erro ao ler JSON";
+        } catch (ParseException error) {
             return "Erro ao utilizar o parser";
         }
     }

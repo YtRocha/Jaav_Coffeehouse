@@ -24,10 +24,14 @@ import Utils.Txt.LerArquivo;
 
 public class Database {
 
-    public static LerArquivo vendas = new LerArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"vendas.txt");
-    public static LerArquivo vendas_identificadas = new LerArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"vendas_identificadas.txt");
-    public static LerArquivo clientes = new LerArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes.txt");
-    public static LerArquivo clientes_excluidos = new LerArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes_excluidos.txt");
+    public static LerArquivo vendas = new LerArquivo(
+            "src" + File.separator + "Database" + File.separator + "Content" + File.separator + "vendas.txt");
+    public static LerArquivo vendas_identificadas = new LerArquivo("src" + File.separator + "Database" + File.separator
+            + "Content" + File.separator + "vendas_identificadas.txt");
+    public static LerArquivo clientes = new LerArquivo(
+            "src" + File.separator + "Database" + File.separator + "Content" + File.separator + "clientes.txt");
+    public static LerArquivo clientes_excluidos = new LerArquivo("src" + File.separator + "Database" + File.separator
+            + "Content" + File.separator + "clientes_excluidos.txt");
 
     public static String[][] dadosVendas() {
         String[] _vendas = vendas.lerArquivo().split("\n");
@@ -70,10 +74,11 @@ public class Database {
         String linha;
 
         if (venda.getCpf() == null) {
-            database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"vendas.txt";
+            database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator + "vendas.txt";
             linha = venda.getProduto() + " | " + venda.getValor() + " | " + venda.getQuantidade();
         } else {
-            database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"vendas_identificadas.txt";
+            database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                    + "vendas_identificadas.txt";
             linha = venda.getProduto() + " | " + venda.getValor() + " | " + venda.getQuantidade() + " | "
                     + venda.getCpf();
         }
@@ -139,7 +144,9 @@ public class Database {
             }
         }
 
-        EscreverArquivo clientes_excluidos_arquivo = new EscreverArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes_excluidos.txt",
+        EscreverArquivo clientes_excluidos_arquivo = new EscreverArquivo(
+                "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                        + "clientes_excluidos.txt",
                 cliente_excluido);
         clientes_excluidos_arquivo.escreverArquivo();
 
@@ -147,7 +154,7 @@ public class Database {
 
         System.out.println(clientes_filtrados.size());
 
-        String db = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes.txt";
+        String db = "src" + File.separator + "Database" + File.separator + "Content" + File.separator + "clientes.txt";
 
         EscreverArquivo clientes_arquivo = new EscreverArquivo(db, "");
         clientes_arquivo.limparArquivo();
@@ -162,7 +169,8 @@ public class Database {
     }
 
     public static boolean cadastraCliente(Cliente cliente) {
-        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes.txt";
+        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                + "clientes.txt";
         String linha = cliente.getNome() + " | " + cliente.getCpf();
 
         try {
@@ -175,66 +183,67 @@ public class Database {
         }
     }
 
-    public static boolean alteraQuantidadeProduto(String codigo, Integer quantidade, boolean somar){
+    public static boolean alteraQuantidadeProduto(String codigo, Integer quantidade, boolean somar) {
         JSONArray jarray = leProduto();
-        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
+        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                + "estoque.json";
         int len = jarray.size();
         JSONObject objeto = new JSONObject();
         JSONParser parser = new JSONParser();
-        try{
-            if(quantidade > 0){
-            FileWriter json = new FileWriter(database);
-            for(int elemento = 0; elemento<len; elemento++){
-                objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
-                if(objeto.containsValue(codigo) == true){
-                    if(somar == true){
-                    objeto.replace("quantidade",objeto.get("quantidade"), Integer.parseInt(objeto.get("quantidade").toString()) + quantidade);
-                    jarray.set(elemento, objeto);
-                    json.write(jarray.toString());
-                    json.close();
-                    }
-                    else{
-                        objeto.replace("quantidade",objeto.get("quantidade"), Integer.parseInt(objeto.get("quantidade").toString()) - quantidade);
-                        if(Integer.parseInt(objeto.get("quantidade").toString()) > 0){
+        try {
+            if (quantidade > 0) {
+                FileWriter json = new FileWriter(database);
+                for (int elemento = 0; elemento < len; elemento++) {
+                    objeto = (JSONObject) parser.parse(jarray.get(elemento).toString());
+                    if (objeto.containsValue(codigo) == true) {
+                        if (somar == true) {
+                            objeto.replace("quantidade", objeto.get("quantidade"),
+                                    Integer.parseInt(objeto.get("quantidade").toString()) + quantidade);
                             jarray.set(elemento, objeto);
                             json.write(jarray.toString());
                             json.close();
-                        }
-                        else{
-                            jarray.remove(elemento);
-                            json.write(jarray.toString());
-                            json.close();
-                            objeto.replace("quantidade", 0);
-                            EscreverJSON escritor = new EscreverJSON("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"fora_de_estoque.json",objeto);
-                            escritor.escreverJson();
+                        } else {
+                            objeto.replace("quantidade", objeto.get("quantidade"),
+                                    Integer.parseInt(objeto.get("quantidade").toString()) - quantidade);
+                            if (Integer.parseInt(objeto.get("quantidade").toString()) > 0) {
+                                jarray.set(elemento, objeto);
+                                json.write(jarray.toString());
+                                json.close();
+                            } else {
+                                jarray.remove(elemento);
+                                json.write(jarray.toString());
+                                json.close();
+                                objeto.replace("quantidade", 0);
+                                EscreverJSON escritor = new EscreverJSON("src" + File.separator + "Database"
+                                        + File.separator + "Content" + File.separator + "fora_de_estoque.json", objeto);
+                                escritor.escreverJson();
+                            }
+
                         }
 
                     }
-                    
+
                 }
-                
-                
+                json.write(jarray.toString());
+                json.close();
+                return true;
+            } else {
+                return false;
             }
-            json.write(jarray.toString());
-            json.close();
-            return true;
-        }
-        else{
-            return false;
-        }
-        }catch(IOException erro){
+        } catch (IOException erro) {
             System.out.println("Erro ao escrever o arquivo.");
             System.out.println(erro.getMessage());
             return false;
-        }catch(ParseException erro){
+        } catch (ParseException erro) {
             System.out.println("Erro ao utilizar o parser");
-        }    
+        }
         return false;
     }
 
     public static JSONArray leProduto() {
 
-        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
+        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                + "estoque.json";
 
         LerJSON leitor = new LerJSON(database);
         leitor.lerJSON();
@@ -244,10 +253,10 @@ public class Database {
 
     }
 
-    
     public static boolean excluiProduto(String codigo) {
         JSONArray jarray = leProduto();
-        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
+        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                + "estoque.json";
         int len = jarray.size();
         JSONArray newJarray = new JSONArray();
         JSONObject objeto = new JSONObject();
@@ -258,10 +267,10 @@ public class Database {
                 if (objeto.containsValue(codigo) == false) {
                     newJarray.add(jarray.get(elemento));
 
-                }
-                else{
+                } else {
                     objeto.replace("quantidade", "excluido");
-                    EscreverJSON escritor = new EscreverJSON("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"excluidos_do_estoque.json",objeto);
+                    EscreverJSON escritor = new EscreverJSON("src" + File.separator + "Database" + File.separator
+                            + "Content" + File.separator + "excluidos_do_estoque.json", objeto);
                     escritor.escreverJson();
                 }
             }
@@ -280,9 +289,11 @@ public class Database {
 
     }
 
-    public static boolean repoeNoEstoque(String codigo, Integer quantidade){
-        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"fora_de_estoque.json";
-        String databaseEstoque = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
+    public static boolean repoeNoEstoque(String codigo, Integer quantidade) {
+        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                + "fora_de_estoque.json";
+        String databaseEstoque = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                + "estoque.json";
         LerJSON leitor = new LerJSON(database);
         leitor.lerJSON();
         JSONArray jarray = new JSONArray();
@@ -291,46 +302,47 @@ public class Database {
         int len = jarray.size();
         JSONObject objeto = new JSONObject();
         JSONParser parser = new JSONParser();
-        try{
-            if(quantidade > 0){
-            FileWriter json = new FileWriter(databaseEstoque);
-            FileWriter jsonForaEstoque = new FileWriter(database);
-            for(int elemento = 0; elemento<len; elemento++){
-                objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
-                if(objeto.containsValue(codigo) == true){
-                    objeto.replace("quantidade",objeto.get("quantidade"), Integer.parseInt(objeto.get("quantidade").toString()) + quantidade);
-                    jarrayEstoque.add(objeto);
-                    json.write(jarrayEstoque.toString());
-                    json.close();
-                    jarray.remove(elemento);
-                    jsonForaEstoque.write(jarray.toString());
-                    jsonForaEstoque.close();
+        try {
+            if (quantidade > 0) {
+                FileWriter json = new FileWriter(databaseEstoque);
+                FileWriter jsonForaEstoque = new FileWriter(database);
+                for (int elemento = 0; elemento < len; elemento++) {
+                    objeto = (JSONObject) parser.parse(jarray.get(elemento).toString());
+                    if (objeto.containsValue(codigo) == true) {
+                        objeto.replace("quantidade", objeto.get("quantidade"),
+                                Integer.parseInt(objeto.get("quantidade").toString()) + quantidade);
+                        jarrayEstoque.add(objeto);
+                        json.write(jarrayEstoque.toString());
+                        json.close();
+                        jarray.remove(elemento);
+                        jsonForaEstoque.write(jarray.toString());
+                        jsonForaEstoque.close();
                     }
 
                 }
-            }else{
+            } else {
                 return false;
             }
-        return true;
-    }catch(IOException erro){
+            return true;
+        } catch (IOException erro) {
             System.out.println("Erro ao escrever o arquivo.");
             System.out.println(erro.getMessage());
             return false;
-        }catch(ParseException erro){
+        } catch (ParseException erro) {
             System.out.println("Erro ao utilizar o parser");
-        }    
+        }
         return false;
-}
+    }
 
     public static boolean cadastraAperitivo(Aperitivo aperitivo) {
 
-        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
+        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                + "estoque.json";
 
         try {
-            if(aperitivo.getQuantidade() <= 0 || aperitivo.getPreco() < 0){
+            if (aperitivo.getQuantidade() <= 0 || aperitivo.getPreco() < 0) {
                 return false;
-            }
-            else{
+            } else {
 
                 JSONObject objeto = new JSONObject();
                 objeto.put("codigo", aperitivo.getCodigo());
@@ -339,7 +351,7 @@ public class Database {
                 objeto.put("quantidade", aperitivo.getQuantidade());
                 objeto.put("categorias", aperitivo.getCategorias());
                 objeto.put("tamanho", aperitivo.getTamanho());
-    
+
                 EscreverJSON escrever = new EscreverJSON(database, objeto);
                 escrever.escreverJson();
             }
@@ -354,25 +366,25 @@ public class Database {
 
     public static boolean cadastraGrao(Grao grao) {
 
-        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
+        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                + "estoque.json";
 
         try {
-            if(grao.getQuantidade() <= 0 || grao.getPreco() < 0){
+            if (grao.getQuantidade() <= 0 || grao.getPreco() < 0) {
                 return false;
-            }
-            else{
-            JSONObject objeto = new JSONObject();
-            objeto.put("codigo", grao.getCodigo());
-            objeto.put("nome", grao.getNome());
-            objeto.put("preco", grao.getPreco());
-            objeto.put("quantidade", grao.getQuantidade());
-            objeto.put("categorias", grao.getCategorias());
-            objeto.put("marca", grao.getMarca());
-            objeto.put("gourmet", grao.getGourmet());
-            objeto.put("torra", grao.getTorra());
+            } else {
+                JSONObject objeto = new JSONObject();
+                objeto.put("codigo", grao.getCodigo());
+                objeto.put("nome", grao.getNome());
+                objeto.put("preco", grao.getPreco());
+                objeto.put("quantidade", grao.getQuantidade());
+                objeto.put("categorias", grao.getCategorias());
+                objeto.put("marca", grao.getMarca());
+                objeto.put("gourmet", grao.getGourmet());
+                objeto.put("torra", grao.getTorra());
 
-            EscreverJSON escrever = new EscreverJSON(database, objeto);
-            escrever.escreverJson();
+                EscreverJSON escrever = new EscreverJSON(database, objeto);
+                escrever.escreverJson();
             }
             return true;
         } catch (Exception e) {
@@ -384,22 +396,22 @@ public class Database {
 
     public static boolean cadastraBebida(Bebida bebida) {
 
-        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
+        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                + "estoque.json";
 
         try {
-            if(bebida.getQuantidade() <= 0 || bebida.getPreco() < 0){
+            if (bebida.getQuantidade() <= 0 || bebida.getPreco() < 0) {
                 return false;
-            }
-            else{
-            JSONObject objeto = new JSONObject();
-            objeto.put("codigo", bebida.getCodigo());
-            objeto.put("nome", bebida.getNome());
-            objeto.put("preco", bebida.getPreco());
-            objeto.put("quantidade", bebida.getQuantidade());
-            objeto.put("categorias", bebida.getCategorias());
+            } else {
+                JSONObject objeto = new JSONObject();
+                objeto.put("codigo", bebida.getCodigo());
+                objeto.put("nome", bebida.getNome());
+                objeto.put("preco", bebida.getPreco());
+                objeto.put("quantidade", bebida.getQuantidade());
+                objeto.put("categorias", bebida.getCategorias());
 
-            EscreverJSON escrever = new EscreverJSON(database, objeto);
-            escrever.escreverJson();
+                EscreverJSON escrever = new EscreverJSON(database, objeto);
+                escrever.escreverJson();
             }
             return true;
         } catch (Exception e) {

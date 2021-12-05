@@ -1,13 +1,12 @@
 package Models.Produtos;
 
-public class Grao extends Produto{
-    
+public class Grao extends Produto {
+
     private String marca;
 
     private Boolean gourmet;
 
-    private String  torra;
-
+    private String torra;
 
     public String getMarca() {
         return this.marca;
@@ -36,6 +35,5 @@ public class Grao extends Produto{
     public void setTorra(String torra) {
         this.torra = torra;
     }
-
 
 }

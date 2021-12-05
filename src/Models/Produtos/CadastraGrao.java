@@ -4,11 +4,10 @@ import Database.Database;
 import Models.Produtos.Interfaces.ICadastraProduto;
 
 public class CadastraGrao implements ICadastraProduto {
-    private Grao grao =  new Grao();
+    private Grao grao = new Grao();
 
-
-
-    public CadastraGrao(String codigo, String nome, Double preco, int quantidade,String categorias, String marca, Boolean gourmet, String torra) {
+    public CadastraGrao(String codigo, String nome, Double preco, int quantidade, String categorias, String marca,
+            Boolean gourmet, String torra) {
         grao.setCodigo(codigo);
         grao.setNome(nome);
         grao.setPreco(preco);
@@ -29,5 +28,5 @@ public class CadastraGrao implements ICadastraProduto {
         // TODO Auto-generated method stub
         return null;
     }
-    
+
 }

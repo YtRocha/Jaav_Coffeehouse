@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Vendas {
-    JPanel painel = new JPanel( new GridLayout(1,1) );
+    JPanel painel = new JPanel(new GridLayout(1, 1));
     JTabbedPane abas = new JTabbedPane();
 
     JPanel painelCadastrarVendas = new CadastrarVendas().getPainel();
@@ -19,7 +19,7 @@ public class Vendas {
         return painel;
     }
 
-    public void inicializar(){
+    public void inicializar() {
         painel.add(abas);
         abas.addTab("Cadastrar Vendas", painelCadastrarVendas);
         abas.addTab("Listar Vendas", painelListarVendas);

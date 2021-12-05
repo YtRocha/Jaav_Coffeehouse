@@ -3,12 +3,10 @@ package Models.Produtos;
 import Database.Database;
 import Models.Produtos.Interfaces.ICadastraProduto;
 
-public class CadastraBebida implements ICadastraProduto{
-    private Bebida bebida =  new Bebida();
+public class CadastraBebida implements ICadastraProduto {
+    private Bebida bebida = new Bebida();
 
-
-
-    public CadastraBebida(String codigo, String nome, Double preco, int quantidade,String categorias) {
+    public CadastraBebida(String codigo, String nome, Double preco, int quantidade, String categorias) {
         bebida.setCodigo(codigo);
         bebida.setNome(nome);
         bebida.setPreco(preco);

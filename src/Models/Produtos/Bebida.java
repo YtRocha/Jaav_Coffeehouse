@@ -1,6 +1,5 @@
 package Models.Produtos;
 
-public class Bebida extends Produto{
-    
+public class Bebida extends Produto {
 
 }

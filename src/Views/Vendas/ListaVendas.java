@@ -11,13 +11,13 @@ public class ListaVendas extends AbaVendas {
         inicializar();
     }
 
-    public void inicializar(){
+    public void inicializar() {
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
-        String [] colunas = { "Produto", "Preço", "Quantidade" };
+        String[] colunas = { "Produto", "Preço", "Quantidade" };
 
         JTable tabela = new JTable(vendas, colunas);
         JScrollPane scroll = new JScrollPane(tabela);
-        
+
         painel.add(scroll);
     }
 }

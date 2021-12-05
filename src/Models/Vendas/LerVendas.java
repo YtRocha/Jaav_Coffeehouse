@@ -7,8 +7,9 @@ import Models.Vendas.Interfaces.ILerVendas;
 import Utils.Txt.LerArquivo;
 
 public class LerVendas implements ILerVendas {
-    LerArquivo vendas = new LerArquivo("src" +File.separator +"Database" +File.separator +"vendas.txt");
-    LerArquivo vendas_identificadas = new LerArquivo("src" +File.separator +"Database" +File.separator +"vendas_identificadas.txt");
+    LerArquivo vendas = new LerArquivo("src" + File.separator + "Database" + File.separator + "vendas.txt");
+    LerArquivo vendas_identificadas = new LerArquivo(
+            "src" + File.separator + "Database" + File.separator + "vendas_identificadas.txt");
 
     public String[][] dadosVendas() {
         return Database.dadosVendas();

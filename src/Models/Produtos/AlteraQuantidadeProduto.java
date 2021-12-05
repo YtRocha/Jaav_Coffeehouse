@@ -3,8 +3,8 @@ package Models.Produtos;
 import Database.Database;
 import Models.Produtos.Interfaces.IAlteraQuantidadeProduto;
 
-public class AlteraQuantidadeProduto implements IAlteraQuantidadeProduto{
-    
+public class AlteraQuantidadeProduto implements IAlteraQuantidadeProduto {
+
     private String codigo;
 
     private int quantidade;

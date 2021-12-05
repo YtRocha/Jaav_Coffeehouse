@@ -13,7 +13,7 @@ public class FiltrarVendas extends AbaVendas implements Formulario {
     JTextField txtFiltrarVendas = new JTextField(10);
     JButton btnFiltrarVendas = new JButton("Filtrar");
 
-    JPanel pnlPesquisa = new JPanel( new BorderLayout() );
+    JPanel pnlPesquisa = new JPanel(new BorderLayout());
 
     JPanel pnlTabela = new JPanel();
 
@@ -22,13 +22,13 @@ public class FiltrarVendas extends AbaVendas implements Formulario {
         eventos();
     }
 
-    public void inicializar(){
+    public void inicializar() {
         painel.setLayout(new BorderLayout());
         painel.add(this.getPnlPesquisa(), BorderLayout.PAGE_START);
         painel.add(this.getPnlTabela(), BorderLayout.CENTER);
     }
-    
-    public JPanel getPnlPesquisa(){
+
+    public JPanel getPnlPesquisa() {
         pnlPesquisa.add(lblFiltrarVendas, BorderLayout.PAGE_START);
         pnlPesquisa.add(txtFiltrarVendas, BorderLayout.CENTER);
         pnlPesquisa.add(btnFiltrarVendas, BorderLayout.PAGE_END);
@@ -36,10 +36,10 @@ public class FiltrarVendas extends AbaVendas implements Formulario {
         return pnlPesquisa;
     }
 
-    public JPanel getPnlTabela(){
+    public JPanel getPnlTabela() {
         pnlTabela.setLayout(new BorderLayout());
 
-        String [] colunas = { "Produto", "Preço", "Quantidade", "Comprador" };
+        String[] colunas = { "Produto", "Preço", "Quantidade", "Comprador" };
 
         JTable tabela = new JTable(vendas, colunas);
         JScrollPane scroll = new JScrollPane(tabela);
@@ -49,7 +49,7 @@ public class FiltrarVendas extends AbaVendas implements Formulario {
         return pnlTabela;
     }
 
-    public void eventos(){
+    public void eventos() {
         btnFiltrarVendas.addActionListener(e -> {
             String cpf = txtFiltrarVendas.getText().trim();
             vendas = new LerVendas().dadosVendasIdentificadas(!cpf.equals("") ? cpf : null);
@@ -57,7 +57,5 @@ public class FiltrarVendas extends AbaVendas implements Formulario {
             inicializar();
         });
     }
-
-
 
 }

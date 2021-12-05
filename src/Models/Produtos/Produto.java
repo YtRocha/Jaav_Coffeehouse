@@ -1,6 +1,6 @@
 package Models.Produtos;
 
-public abstract class Produto{
+public abstract class Produto {
 
     private String id;
 
@@ -13,7 +13,6 @@ public abstract class Produto{
     private int quantidade;
 
     private String categorias;
-    
 
     /* ---- Construtores ---- */
 
@@ -31,16 +30,15 @@ public abstract class Produto{
 
     /* ---- Getters e Setters ---- */
 
-
     public String getId() {
         return this.id;
     }
 
-    public String getCodigo(){
+    public String getCodigo() {
         return this.codigo;
     }
 
-    public void setCodigo(String codigo){
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -68,11 +66,11 @@ public abstract class Produto{
         this.quantidade = quantidade;
     }
 
-    public String getCategorias(){
+    public String getCategorias() {
         return this.categorias;
     }
 
-    public void setCategorias(String categorias){
+    public void setCategorias(String categorias) {
         this.categorias = categorias;
     }
 
