@@ -1,5 +1,6 @@
 package Database;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -23,10 +24,10 @@ import Utils.Txt.LerArquivo;
 
 public class Database {
 
-    public static LerArquivo vendas = new LerArquivo("src/Database/Content/vendas.txt");
-    public static LerArquivo vendas_identificadas = new LerArquivo("src/Database/Content/vendas_identificadas.txt");
-    public static LerArquivo clientes = new LerArquivo("src/Database/Content/clientes.txt");
-    public static LerArquivo clientes_excluidos = new LerArquivo("src/Database/Content/clientes_excluidos.txt");
+    public static LerArquivo vendas = new LerArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"vendas.txt");
+    public static LerArquivo vendas_identificadas = new LerArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"vendas_identificadas.txt");
+    public static LerArquivo clientes = new LerArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes.txt");
+    public static LerArquivo clientes_excluidos = new LerArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes_excluidos.txt");
 
     public static String[][] dadosVendas() {
         String[] _vendas = vendas.lerArquivo().split("\n");
@@ -69,10 +70,10 @@ public class Database {
         String linha;
 
         if (venda.getCpf() == null) {
-            database = "src/Database/Content/vendas.txt";
+            database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"vendas.txt";
             linha = venda.getProduto() + " | " + venda.getValor() + " | " + venda.getQuantidade();
         } else {
-            database = "src/Database/Content/vendas_identificadas.txt";
+            database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"vendas_identificadas.txt";
             linha = venda.getProduto() + " | " + venda.getValor() + " | " + venda.getQuantidade() + " | "
                     + venda.getCpf();
         }
@@ -138,7 +139,7 @@ public class Database {
             }
         }
 
-        EscreverArquivo clientes_excluidos_arquivo = new EscreverArquivo("src/Database/Content/clientes_excluidos.txt",
+        EscreverArquivo clientes_excluidos_arquivo = new EscreverArquivo("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes_excluidos.txt",
                 cliente_excluido);
         clientes_excluidos_arquivo.escreverArquivo();
 
@@ -146,7 +147,7 @@ public class Database {
 
         System.out.println(clientes_filtrados.size());
 
-        String db = "src/Database/Content/clientes.txt";
+        String db = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes.txt";
 
         EscreverArquivo clientes_arquivo = new EscreverArquivo(db, "");
         clientes_arquivo.limparArquivo();
@@ -161,7 +162,7 @@ public class Database {
     }
 
     public static boolean cadastraCliente(Cliente cliente) {
-        String database = "src/Database/Content/clientes.txt";
+        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"clientes.txt";
         String linha = cliente.getNome() + " | " + cliente.getCpf();
 
         try {
@@ -176,7 +177,7 @@ public class Database {
 
     public static boolean alteraQuantidadeProduto(String codigo, Integer quantidade, boolean somar){
         JSONArray jarray = leProduto();
-        String database = "src/Database/Content/estoque.json";
+        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
         int len = jarray.size();
         JSONObject objeto = new JSONObject();
         JSONParser parser = new JSONParser();
@@ -204,7 +205,7 @@ public class Database {
                             json.write(jarray.toString());
                             json.close();
                             objeto.replace("quantidade", 0);
-                            EscreverJSON escritor = new EscreverJSON("src/Database/Content/fora_de_estoque.json",objeto);
+                            EscreverJSON escritor = new EscreverJSON("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"fora_de_estoque.json",objeto);
                             escritor.escreverJson();
                         }
 
@@ -233,7 +234,7 @@ public class Database {
 
     public static JSONArray leProduto() {
 
-        String database = "src/Database/Content/estoque.json";
+        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
 
         LerJSON leitor = new LerJSON(database);
         leitor.lerJSON();
@@ -246,7 +247,7 @@ public class Database {
     
     public static boolean excluiProduto(String codigo) {
         JSONArray jarray = leProduto();
-        String database = "src/Database/Content/estoque.json";
+        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
         int len = jarray.size();
         JSONArray newJarray = new JSONArray();
         JSONObject objeto = new JSONObject();
@@ -260,7 +261,7 @@ public class Database {
                 }
                 else{
                     objeto.replace("quantidade", "excluido");
-                    EscreverJSON escritor = new EscreverJSON("src/Database/Content/excluidos_do_estoque.json",objeto);
+                    EscreverJSON escritor = new EscreverJSON("src" +File.separator +"Database" +File.separator +"Content" +File.separator +"excluidos_do_estoque.json",objeto);
                     escritor.escreverJson();
                 }
             }
@@ -280,8 +281,8 @@ public class Database {
     }
 
     public static boolean repoeNoEstoque(String codigo, Integer quantidade){
-        String database = "src/Database/Content/fora_de_estoque.json";
-        String databaseEstoque = "src/Database/Content/estoque.json";
+        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"fora_de_estoque.json";
+        String databaseEstoque = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
         LerJSON leitor = new LerJSON(database);
         leitor.lerJSON();
         JSONArray jarray = new JSONArray();
@@ -323,7 +324,7 @@ public class Database {
 
     public static boolean cadastraAperitivo(Aperitivo aperitivo) {
 
-        String database = "src/Database/Content/estoque.json";
+        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
 
         try {
             if(aperitivo.getQuantidade() <= 0 || aperitivo.getPreco() < 0){
@@ -353,7 +354,7 @@ public class Database {
 
     public static boolean cadastraGrao(Grao grao) {
 
-        String database = "src/Database/Content/estoque.json";
+        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
 
         try {
             if(grao.getQuantidade() <= 0 || grao.getPreco() < 0){
@@ -383,7 +384,7 @@ public class Database {
 
     public static boolean cadastraBebida(Bebida bebida) {
 
-        String database = "src/Database/Content/estoque.json";
+        String database = "src" +File.separator +"Database" +File.separator +"Content" +File.separator +"estoque.json";
 
         try {
             if(bebida.getQuantidade() <= 0 || bebida.getPreco() < 0){

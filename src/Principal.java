@@ -1,6 +1,7 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 import Views.Clientes.Clientes;
 import Views.Vendas.Vendas;
@@ -36,7 +37,7 @@ public class Principal {
         */
         principalAbas.addTab("Produtos", new JPanel());
 
-        ImageIcon icon = new ImageIcon("src/Img/logo.png");
+        ImageIcon icon = new ImageIcon("src" +File.separator +"Img" +File.separator +"logo.png");
         JFrame tela = new JFrame("JAAV Coffee House System");
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.add(principalAbas);
