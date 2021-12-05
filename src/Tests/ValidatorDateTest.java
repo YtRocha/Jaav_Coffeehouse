@@ -10,6 +10,13 @@ public class ValidatorDateTest {
         assert (Validator.isDateValid("01-01-2020") == false);
         assert (Validator.isDateValid("01.01.2020") == false);
         assert (Validator.isDateValid("07-22-2020") == false);
+        assert (Validator.isDateValid("07/22/2020") == false);
+        assert (Validator.isDateValid("55/55/5555") == false);
+    }
+
+    @Test
+    public void isDateValid_should_returns_false_if_no_date_is_provided() {
+        assert (Validator.isDateValid("") == false);
     }
 
     @Test
