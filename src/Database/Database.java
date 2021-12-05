@@ -252,6 +252,10 @@ public class Database {
                     newJarray.add(jarray.get(elemento));
 
                 }
+                else{
+                    EscreverJSON escritor = new EscreverJSON("src/Database/Content/excluidos_do_estoque.json",objeto);
+                    escritor.escreverJson();
+                }
             }
             FileWriter json = new FileWriter(database);
             json.write(newJarray.toString());
