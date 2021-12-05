@@ -8,12 +8,12 @@ public class CadastraAperitivo implements ICadastraProduto{
 
 
 
-    public CadastraAperitivo(String codigo, String nome, Double preco, int quantidade,String categoria, String tamanho) {
+    public CadastraAperitivo(String codigo, String nome, Double preco, int quantidade,String categorias, String tamanho) {
         aperitivo.setCodigo(codigo);
         aperitivo.setNome(nome);
         aperitivo.setPreco(preco);
         aperitivo.setQuantidade(quantidade);
-        aperitivo.setCategoria(categoria);
+        aperitivo.setCategorias(categorias);
         aperitivo.setTamanho(tamanho);
     }
 

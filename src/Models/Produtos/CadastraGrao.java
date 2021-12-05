@@ -8,12 +8,12 @@ public class CadastraGrao implements ICadastraProduto {
 
 
 
-    public CadastraGrao(String codigo, String nome, Double preco, int quantidade,String categoria, String marca, Boolean gourmet, String torra) {
+    public CadastraGrao(String codigo, String nome, Double preco, int quantidade,String categorias, String marca, Boolean gourmet, String torra) {
         grao.setCodigo(codigo);
         grao.setNome(nome);
         grao.setPreco(preco);
         grao.setQuantidade(quantidade);
-        grao.setCategoria(categoria);
+        grao.setCategorias(categorias);
         grao.setMarca(marca);
         grao.setGourmet(gourmet);
         grao.setTorra(torra);

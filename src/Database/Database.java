@@ -287,7 +287,7 @@ public class Database {
                 objeto.put("nome", aperitivo.getNome());
                 objeto.put("preco", aperitivo.getPreco());
                 objeto.put("quantidade", aperitivo.getQuantidade());
-                objeto.put("categoria", aperitivo.getCategoria());
+                objeto.put("categorias", aperitivo.getCategorias());
                 objeto.put("tamanho", aperitivo.getTamanho());
     
                 EscreverJSON escrever = new EscreverJSON(database, objeto);
@@ -316,7 +316,7 @@ public class Database {
             objeto.put("nome", grao.getNome());
             objeto.put("preco", grao.getPreco());
             objeto.put("quantidade", grao.getQuantidade());
-            objeto.put("categoria", grao.getCategoria());
+            objeto.put("categorias", grao.getCategorias());
             objeto.put("marca", grao.getMarca());
             objeto.put("gourmet", grao.getGourmet());
             objeto.put("torra", grao.getTorra());
@@ -346,7 +346,7 @@ public class Database {
             objeto.put("nome", bebida.getNome());
             objeto.put("preco", bebida.getPreco());
             objeto.put("quantidade", bebida.getQuantidade());
-            objeto.put("categoria", bebida.getCategoria());
+            objeto.put("categorias", bebida.getCategorias());
 
             EscreverJSON escrever = new EscreverJSON(database, objeto);
             escrever.escreverJson();
