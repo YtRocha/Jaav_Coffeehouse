@@ -10,7 +10,7 @@ public class ValidatorCPFTest {
         assert !Validator.isCpfValid("12345678123");
     }
 
-    public void isValidCpf_should_return_true_if_invalid_cpf_is_provided() {
+    public void isValidCpf_should_return_true_if_a_valid_cpf_is_provided() {
         // CPF gerado.
         assert Validator.isCpfValid("63613186055");
     }
