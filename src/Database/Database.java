@@ -181,6 +181,7 @@ public class Database {
         JSONObject objeto = new JSONObject();
         JSONParser parser = new JSONParser();
         try{
+            if(quantidade > 0){
             FileWriter json = new FileWriter(database);
             for(int elemento = 0; elemento<len; elemento++){
                 objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
@@ -216,6 +217,10 @@ public class Database {
             json.write(jarray.toString());
             json.close();
             return true;
+        }
+        else{
+            return false;
+        }
         }catch(IOException erro){
             System.out.println("Erro ao escrever o arquivo.");
             System.out.println(erro.getMessage());
@@ -236,6 +241,12 @@ public class Database {
         jarray = leitor.getJarray();
         return jarray;
 
+    }
+
+    public static boolean repoeNoEstoque(String codigo){
+
+
+        return true;
     }
 
     public static boolean excluiProduto(String codigo) {
