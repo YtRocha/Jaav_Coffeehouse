@@ -181,6 +181,7 @@ public class Database {
         JSONObject objeto = new JSONObject();
         JSONParser parser = new JSONParser();
         try{
+            if(quantidade > 0){
             FileWriter json = new FileWriter(database);
             for(int elemento = 0; elemento<len; elemento++){
                 objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
@@ -216,6 +217,10 @@ public class Database {
             json.write(jarray.toString());
             json.close();
             return true;
+        }
+        else{
+            return false;
+        }
         }catch(IOException erro){
             System.out.println("Erro ao escrever o arquivo.");
             System.out.println(erro.getMessage());
@@ -238,6 +243,7 @@ public class Database {
 
     }
 
+    
     public static boolean excluiProduto(String codigo) {
         JSONArray jarray = leProduto();
         String database = "src/Database/Content/estoque.json";
@@ -253,6 +259,7 @@ public class Database {
 
                 }
                 else{
+                    objeto.replace("quantidade", "excluido");
                     EscreverJSON escritor = new EscreverJSON("src/Database/Content/excluidos_do_estoque.json",objeto);
                     escritor.escreverJson();
                 }
@@ -272,6 +279,48 @@ public class Database {
 
     }
 
+    public static boolean repoeNoEstoque(String codigo, Integer quantidade){
+        String database = "src/Database/Content/fora_de_estoque.json";
+        String databaseEstoque = "src/Database/Content/estoque.json";
+        LerJSON leitor = new LerJSON(database);
+        leitor.lerJSON();
+        JSONArray jarray = new JSONArray();
+        jarray = leitor.getJarray();
+        JSONArray jarrayEstoque = leProduto();
+        int len = jarray.size();
+        JSONObject objeto = new JSONObject();
+        JSONParser parser = new JSONParser();
+        try{
+            if(quantidade > 0){
+            FileWriter json = new FileWriter(databaseEstoque);
+            FileWriter jsonForaEstoque = new FileWriter(database);
+            for(int elemento = 0; elemento<len; elemento++){
+                objeto =(JSONObject)parser.parse(jarray.get(elemento).toString());
+                if(objeto.containsValue(codigo) == true){
+                    objeto.replace("quantidade",objeto.get("quantidade"), Integer.parseInt(objeto.get("quantidade").toString()) + quantidade);
+                    jarrayEstoque.add(objeto);
+                    json.write(jarrayEstoque.toString());
+                    json.close();
+                    jarray.remove(elemento);
+                    jsonForaEstoque.write(jarray.toString());
+                    jsonForaEstoque.close();
+                    }
+
+                }
+            }else{
+                return false;
+            }
+        return true;
+    }catch(IOException erro){
+            System.out.println("Erro ao escrever o arquivo.");
+            System.out.println(erro.getMessage());
+            return false;
+        }catch(ParseException erro){
+            System.out.println("Erro ao utilizar o parser");
+        }    
+        return false;
+}
+
     public static boolean cadastraAperitivo(Aperitivo aperitivo) {
 
         String database = "src/Database/Content/estoque.json";
@@ -287,7 +336,7 @@ public class Database {
                 objeto.put("nome", aperitivo.getNome());
                 objeto.put("preco", aperitivo.getPreco());
                 objeto.put("quantidade", aperitivo.getQuantidade());
-                objeto.put("categoria", aperitivo.getCategoria());
+                objeto.put("categorias", aperitivo.getCategorias());
                 objeto.put("tamanho", aperitivo.getTamanho());
     
                 EscreverJSON escrever = new EscreverJSON(database, objeto);
@@ -316,7 +365,7 @@ public class Database {
             objeto.put("nome", grao.getNome());
             objeto.put("preco", grao.getPreco());
             objeto.put("quantidade", grao.getQuantidade());
-            objeto.put("categoria", grao.getCategoria());
+            objeto.put("categorias", grao.getCategorias());
             objeto.put("marca", grao.getMarca());
             objeto.put("gourmet", grao.getGourmet());
             objeto.put("torra", grao.getTorra());
@@ -346,7 +395,7 @@ public class Database {
             objeto.put("nome", bebida.getNome());
             objeto.put("preco", bebida.getPreco());
             objeto.put("quantidade", bebida.getQuantidade());
-            objeto.put("categoria", bebida.getCategoria());
+            objeto.put("categorias", bebida.getCategorias());
 
             EscreverJSON escrever = new EscreverJSON(database, objeto);
             escrever.escreverJson();
