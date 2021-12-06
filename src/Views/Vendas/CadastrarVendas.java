@@ -80,7 +80,7 @@ public class CadastrarVendas extends AbaVendas {
                 String produto = campoProduto.getText();
                 int quantidade = Integer.parseInt(campoQuantidade.getText());
                 double valor = Double.parseDouble(campoValor.getText());
-
+                
                 if (!cpf.equals("")) {
                     try {
                         AchaCodigoQuantidade acharCodigoQuantidade = new AchaCodigoQuantidade(produto,
