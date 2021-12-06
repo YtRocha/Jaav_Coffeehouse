@@ -20,7 +20,6 @@ import java.io.File;
 import Models.Produtos.AchaCodigoQuantidade;
 import Models.Produtos.AlteraQuantidadeProduto;
 import Models.Vendas.CadastraVenda;
-import Utils.JSON.LerJSON;
 
 public class CadastrarVendas extends AbaVendas {
     JLabel labelProduto = new JLabel("Digite o nome do produto:");
