@@ -86,6 +86,7 @@ public class ReporEstoque extends AbaProdutos implements Formulario {
                             repor.repor();
                             campoNome.setText("");
                             campoQuantidade.setText("");
+                            achar.resetCodigo();
                         }else{
                             JOptionPane.showMessageDialog(null, "Produto nao cadastrado");
                         }

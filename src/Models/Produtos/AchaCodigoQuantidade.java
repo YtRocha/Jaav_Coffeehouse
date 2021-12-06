@@ -22,9 +22,14 @@ public class AchaCodigoQuantidade {
         return this.codigo;
     }
     
+    public void resetCodigo(){
+        this.codigo = null;
+    }
+
     public int getQuantidade(){
         return this.quantidade;
     }
+
     
     public AchaCodigoQuantidade(String nome, String database) {
         this.nome = nome;

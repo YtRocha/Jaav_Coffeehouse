@@ -12,6 +12,7 @@ public class Produtos {
     JPanel painelCadastrarGrao = new CadastrarGrao().getPainel();
     JPanel painelCadastrarBebida = new CadastrarBebida().getPainel();
     JPanel painelReporEstoque = new ReporEstoque().getPainel();
+    JPanel painelExcluiProduto = new ExcluiProdutos().getPainel();
 
     public Produtos() {
         inicializar();
@@ -26,6 +27,7 @@ public class Produtos {
         abas.addTab("Cadastrar Graos", painelCadastrarGrao);
         abas.addTab("Cadastrar Bebidas", painelCadastrarBebida);
         abas.addTab("Repor Produto", painelReporEstoque);
+        abas.addTab("Excluir Produtos", painelExcluiProduto);
 
         painel.add(abas);
     }

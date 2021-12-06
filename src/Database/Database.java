@@ -252,10 +252,12 @@ public class Database {
 
     }
 
-    public static boolean excluiProduto(String codigo) {
-        JSONArray jarray = leProduto();
-        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
-                + "estoque.json";
+    public static boolean excluiProduto(String codigo, String database) {
+        LerJSON leitor = new LerJSON(database);
+        leitor.lerJSON();
+        JSONArray jarray = new JSONArray();
+        jarray = leitor.getJarray();
+        
         int len = jarray.size();
         JSONArray newJarray = new JSONArray();
         JSONObject objeto = new JSONObject();
