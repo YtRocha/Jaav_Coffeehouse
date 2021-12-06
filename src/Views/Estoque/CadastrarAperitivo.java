@@ -4,7 +4,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import Models.Produtos.AchaCodigoQuantidade;
 import Models.Produtos.CadastraAperitivo;
+import Models.Produtos.ExisteCodigo;
+import Utils.JSON.LerJSON;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -17,6 +24,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import Views.Formulario;
 
@@ -94,19 +102,36 @@ public class CadastrarAperitivo extends AbaProdutos implements Formulario {
                     try {
                         if (Integer.parseInt(campoQuantidade.getText()) > 0
                                 || Double.parseDouble(campoPreco.getText()) > 0) {
-                            CadastraAperitivo cadastraAperitivo = new CadastraAperitivo(campoCodigo.getText().toUpperCase(),
+                            
+                                    ExisteCodigo existe = new ExisteCodigo(campoCodigo.getText().toUpperCase(),
+                                    "src"+File.separator+"Database"+File.separator+"Content"+File.separator+"estoque.json");
+                                    existe.existeEsseCodigo();
+                                    ExisteCodigo existeForaE = new ExisteCodigo(campoCodigo.getText().toUpperCase(),
+                                    "src"+File.separator+"Database"+File.separator+"Content"+File.separator+"fora_de_estoque.json");
+                                    existeForaE.existeEsseCodigo();
+                                    if(existe.getExiste() == null){
+                                        if(existeForaE.getExiste() == null){
+                                            CadastraAperitivo cadastraAperitivo = new CadastraAperitivo(campoCodigo.getText().toUpperCase(),
                                     campoNome.getText().toLowerCase(),
                                     Double.parseDouble(campoPreco.getText()),
                                     Integer.parseInt(campoQuantidade.getText()),
                                     campoCategorias.getText().toLowerCase(), campoTamanho.getText().toLowerCase());
-                            cadastraAperitivo.cadastrar();
-                            campoCodigo.setText("");
-                            campoNome.setText("");
-                            campoPreco.setText("");
-                            campoQuantidade.setText("");
-                            campoCategorias.setText("");
-                            campoTamanho.setText("");
-                        } else {
+                                    cadastraAperitivo.cadastrar();
+                                    campoCodigo.setText("");
+                                    campoNome.setText("");
+                                    campoPreco.setText("");
+                                    campoQuantidade.setText("");
+                                    campoCategorias.setText("");
+                                    campoTamanho.setText("");
+                                        }
+                                        else{JOptionPane.showMessageDialog(null, "Produto com esse codigo ja existe e esta fora de estoque!");}
+                                    } else{JOptionPane.showMessageDialog(null, "Produto com esse codigo ja existe!");}
+                                    
+                                    
+                                    }
+                                
+                            
+                        else {
                             JOptionPane.showMessageDialog(null, "Insira numeros validos!");
                         }
 

@@ -73,5 +73,38 @@
         "categorias": "asasa",
         "nome": "asas",
         "quantidade": 1
+    },
+    {
+        "preco": 3.0,
+        "codigo": "A002TL",
+        "tamanho": "medio",
+        "categorias": "aperitivo, bolo",
+        "nome": "torta de limao",
+        "quantidade": 7
+    },
+    {
+        "preco": 3.0,
+        "codigo": "A002B",
+        "tamanho": "medio",
+        "categorias": "aperitivo, bolo",
+        "nome": "torta de limao",
+        "quantidade": 12
+    },
+    {
+        "preco": 3.0,
+        "torra": "a",
+        "marca": "a",
+        "codigo": "A002CB",
+        "gourmet": true,
+        "categorias": "a",
+        "nome": "a",
+        "quantidade": 1
+    },
+    {
+        "preco": 3.0,
+        "codigo": "A002CBB",
+        "categorias": "a",
+        "nome": "a",
+        "quantidade": 1
     }
 ]

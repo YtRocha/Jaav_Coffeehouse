@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "preco": 3.0,
+        "codigo": "A002C",
+        "tamanho": "medio",
+        "categorias": "aperitivo, salgado",
+        "nome": "coxinha",
+        "quantidade": 0
+    }
+]
