@@ -143,3 +143,6 @@ empadinha | 2.0 | 1
 
 empadinha | 1.0 | 1
 
+
+asas | 134.0 | 1
+
