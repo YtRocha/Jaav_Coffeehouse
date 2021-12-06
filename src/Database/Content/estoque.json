@@ -1,1 +1,25 @@
-[]
+[
+    {
+        "preco": 3.0,
+        "codigo": "A002B",
+        "tamanho": "medio",
+        "categorias": "aperitivo, bolo",
+        "nome": "torta de limao",
+        "quantidade": "excluido"
+    },
+    {
+        "preco": 10.0,
+        "codigo": "A001E",
+        "tamanho": "pequeno",
+        "categorias": "aperitivo, salgado",
+        "nome": "empadinha",
+        "quantidade": "excluido"
+    },
+    {
+        "preco": 20.0,
+        "codigo": "B001L",
+        "categorias": "bebida, leite",
+        "nome": "lactea",
+        "quantidade": "excluido"
+    }
+]
