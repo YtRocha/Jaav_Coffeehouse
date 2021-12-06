@@ -68,6 +68,9 @@ public class CadastrarClientes extends AbaClientes implements Formulario {
                     try {
                         CadastraCliente cadastra_cliente = new CadastraCliente(campoNome.getText(), campoCPF.getText());
                         cadastra_cliente.cadastrar();
+                        campoNome.setText("");
+                        campoCPF.setText("");
+                        JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null, "Erro ao cadastrar cliente: " + ex.getMessage());
                     }
