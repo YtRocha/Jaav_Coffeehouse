@@ -20,8 +20,8 @@ import java.awt.event.ActionListener;
 
 import Views.Formulario;
 
-public class CadastrarGrao extends AbaProdutos implements Formulario{
-    
+public class CadastrarGrao extends AbaProdutos implements Formulario {
+
     JLabel labelNome = new JLabel("Digite o nome do grao:");
     JTextField campoNome = new JTextField(10);
 
@@ -48,7 +48,7 @@ public class CadastrarGrao extends AbaProdutos implements Formulario{
 
     JButton botaoCadastrar = new JButton("Cadastrar");
 
-    public CadastrarAperitivo() {
+    public CadastrarGrao() {
         inicializar();
         eventos();
     }
@@ -82,7 +82,6 @@ public class CadastrarGrao extends AbaProdutos implements Formulario{
         painelCadastro.add(campoGourmet);
         painelCadastro.add(labelTorra);
         painelCadastro.add(campoTorra);
-        
 
         rodape.add(botaoCadastrar);
         painel.add(leftSpace, BorderLayout.LINE_START);
@@ -96,44 +95,48 @@ public class CadastrarGrao extends AbaProdutos implements Formulario{
         botaoCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (campoNome.getText().equals("") || campoCodigo.getText().equals("") || campoPreco.getText().equals("")
-                || campoQuantidade.getText().equals("") || campoCategorias.getText().equals("") || campoMarca.getText().equals("")
-                || campoGourmet.getText().equals("") || campoTorra.getText().equals("")) {
+                if (campoNome.getText().equals("") || campoCodigo.getText().equals("")
+                        || campoPreco.getText().equals("")
+                        || campoQuantidade.getText().equals("") || campoCategorias.getText().equals("")
+                        || campoMarca.getText().equals("")
+                        || campoGourmet.getText().equals("") || campoTorra.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
                 } else {
                     try {
-                    Boolean gourmet = false;
-                    if(campoGourmet.getText().toLowerCase() == "sim"){
-                        gourmet = true;
-                    } else if(campoGourmet.getText().toLowerCase() == "nao"){
-                        gourmet = false;
-                    } else{
-                        JOptionPane.showMessageDialog(null, "Insira sim ou nao para a pergunta sobre gourmet!");
-                    }
+                        Boolean gourmet = false;
+                        if (campoGourmet.getText().toLowerCase() == "sim") {
+                            gourmet = true;
+                        } else if (campoGourmet.getText().toLowerCase() == "nao") {
+                            gourmet = false;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Insira sim ou nao para a pergunta sobre gourmet!");
+                        }
 
-                    if(Integer.parseInt(campoQuantidade.getText()) > 0 || Double.parseDouble(campoPreco.getText()) > 0){
-                        CadastraGrao cadastraAperitivo = new CadastraGrao(campoCodigo.getText(), campoNome.getText(),
-                        Double.parseDouble(campoPreco.getText()), Integer.parseInt(campoQuantidade.getText()),
-                        campoCategorias.getText(), campoMarca.getText(), gourmet, campoTorra.getText());
-                        cadastraAperitivo.cadastrar();
-                        campoCodigo.setText("");
-                        campoNome.setText("");
-                        campoPreco.setText("");
-                        campoQuantidade.setText("");
-                        campoCategorias.setText("");
-                        campoMarca.setText("");
-                        campoGourmet.setText("");
-                        campoTorra.setText("");
-                    }
-                    else{
+                        if (Integer.parseInt(campoQuantidade.getText()) > 0
+                                || Double.parseDouble(campoPreco.getText()) > 0) {
+                            CadastraGrao cadastraAperitivo = new CadastraGrao(campoCodigo.getText(),
+                                    campoNome.getText(),
+                                    Double.parseDouble(campoPreco.getText()),
+                                    Integer.parseInt(campoQuantidade.getText()),
+                                    campoCategorias.getText(), campoMarca.getText(), gourmet, campoTorra.getText());
+                            cadastraAperitivo.cadastrar();
+                            campoCodigo.setText("");
+                            campoNome.setText("");
+                            campoPreco.setText("");
+                            campoQuantidade.setText("");
+                            campoCategorias.setText("");
+                            campoMarca.setText("");
+                            campoGourmet.setText("");
+                            campoTorra.setText("");
+                        } else {
                             JOptionPane.showMessageDialog(null, "Insira numeros validos!");
                         }
-                        
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto: " + ex.getMessage());
+
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto: " + ex.getMessage());
+                    }
                 }
-                }
-        }
-    });
-}
+            }
+        });
+    }
 }
