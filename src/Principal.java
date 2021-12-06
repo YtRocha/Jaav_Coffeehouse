@@ -4,6 +4,7 @@ import java.awt.*;
 import java.io.File;
 
 import Views.Clientes.Clientes;
+import Views.Estoque.Produtos;
 import Views.Vendas.Vendas;
 
 public class Principal {
@@ -34,7 +35,8 @@ public class Principal {
          * - Listar todos os produtos cadastrados
          * - Listar os produtos dispon�veis no estoque
          */
-        principalAbas.addTab("Produtos", new JPanel());
+        JPanel produtos_interface = new Produtos().getPainel();
+        principalAbas.addTab("Produtos", produtos_interface);
 
         ImageIcon icon = new ImageIcon("src" + File.separator + "Img" + File.separator + "logo.png");
         JFrame tela = new JFrame("JAAV Coffee House System");

@@ -1,1 +1,34 @@
-[{"preco":5.0,"codigo":"A002BC","tamanho":"media","categorias":"aperitivo, bolo, chocolate","nome":"bolo de chocolate","quantidade":30},{"preco":20.0,"torra":"forte","marca":"marata","codigo":"G003GM","gourmet":true,"categorias":"grao","nome":"grao marata","quantidade":40},{"preco":20.0,"torra":"forte","marca":"marata","codigo":"G003GM","gourmet":true,"categorias":"grao","nome":"grao marata","quantidade":40}]
+[
+    {
+        "preco": 3.5,
+        "codigo": "A002BC",
+        "tamanho": "medio",
+        "categorias": "bolo, chocolate",
+        "nome": "bolo de chocolate ",
+        "quantidade": 3
+    },
+    {
+        "preco": 3.5,
+        "codigo": "A002BC",
+        "tamanho": "medio",
+        "categorias": "bolo, chocolate",
+        "nome": "bolo de chocolate ",
+        "quantidade": 3
+    },
+    {
+        "preco": 4.5,
+        "codigo": "A003BO",
+        "tamanho": "grande",
+        "categorias": "bolo",
+        "nome": "bolo de ovos",
+        "quantidade": 7
+    },
+    {
+        "preco": 2.2,
+        "codigo": "aaa",
+        "tamanho": "aaa",
+        "categorias": "aaa",
+        "nome": "aaa",
+        "quantidade": 10
+    }
+]
