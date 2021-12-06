@@ -4,8 +4,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -85,27 +83,32 @@ public class CadastrarVendas extends AbaVendas {
 
                 if (!cpf.equals("")) {
                     try {
-                        AchaCodigoQuantidade acharCodigoQuantidade = new AchaCodigoQuantidade(produto,"src"+File.separator+"Database"+File.separator+"Content"+File.separator+"estoque.json");
+                        AchaCodigoQuantidade acharCodigoQuantidade = new AchaCodigoQuantidade(produto,
+                                "src" + File.separator + "Database" + File.separator + "Content" + File.separator
+                                        + "estoque.json");
                         acharCodigoQuantidade.acharCodigoQuantidade();
                         String codigo = acharCodigoQuantidade.getCodigo();
                         int quantidadeEstoque = acharCodigoQuantidade.getQuantidade();
-                        if(codigo != null){
-                            if(quantidadeEstoque >= quantidade){
-                                AlteraQuantidadeProduto alteraQuantidadeProduto = new AlteraQuantidadeProduto(codigo, quantidade, false);
+                        if (codigo != null) {
+                            if (quantidadeEstoque >= quantidade) {
+                                AlteraQuantidadeProduto alteraQuantidadeProduto = new AlteraQuantidadeProduto(codigo,
+                                        quantidade, false);
                                 alteraQuantidadeProduto.alterar();
                                 CadastraVenda cadastrarVendas = new CadastraVenda(produto, valor, quantidade, cpf);
                                 cadastrarVendas.cadastrar();
-                            campoCliente.setText("");
-                            campoProduto.setText("");
-                            campoQuantidade.setText("");
-                            campoValor.setText("");
-                            JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
-                        }else{
-                            JOptionPane.showMessageDialog(null, "Quantidade insuficiente... venda cancelada. a quantidade em estoque e: " + quantidadeEstoque);
+                                campoCliente.setText("");
+                                campoProduto.setText("");
+                                campoQuantidade.setText("");
+                                campoValor.setText("");
+                                JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
+                            } else {
+                                JOptionPane.showMessageDialog(null,
+                                        "Quantidade insuficiente... venda cancelada. a quantidade em estoque e: "
+                                                + quantidadeEstoque);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Produto nao encontrado!");
                         }
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Produto nao encontrado!");
-                    }
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null, "CPF inválido!");
                     }
@@ -113,7 +116,6 @@ public class CadastrarVendas extends AbaVendas {
                     CadastraVenda cadastrarVendas = new CadastraVenda(produto, valor, quantidade);
                     cadastrarVendas.cadastrar();
                 }
-
             }
         });
     }

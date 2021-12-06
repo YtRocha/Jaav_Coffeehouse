@@ -19,7 +19,7 @@ public class EscreverArquivo {
         try {
             FileWriter arquivo = new FileWriter(caminho, true);
             PrintWriter escreverArquivo = new PrintWriter(arquivo);
-            escreverArquivo.println(texto);
+            escreverArquivo.println("\n" + texto + "\n");
             escreverArquivo.close();
             return true;
         } catch (IOException erro) {
