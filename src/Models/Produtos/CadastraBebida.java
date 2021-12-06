@@ -19,10 +19,6 @@ public class CadastraBebida implements ICadastraProduto {
         return Database.cadastraBebida(this.bebida);
     }
 
-    @Override
-    public String geraId() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    
 
 }

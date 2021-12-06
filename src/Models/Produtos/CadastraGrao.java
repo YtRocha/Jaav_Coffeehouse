@@ -23,10 +23,6 @@ public class CadastraGrao implements ICadastraProduto {
         return Database.cadastraGrao(this.grao);
     }
 
-    @Override
-    public String geraId() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    
 
 }

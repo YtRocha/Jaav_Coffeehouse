@@ -2,8 +2,6 @@ package Models.Clientes;
 
 public class Cliente {
 
-    private Long id;
-
     private String nome;
 
     private String cpf;
@@ -14,17 +12,13 @@ public class Cliente {
 
     }
 
-    public Cliente(Long id, String nome, String cpf) {
-        this.id = id;
+    public Cliente(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }
 
     /* ---- Getters e Setters ---- */
 
-    public Long getId() {
-        return this.id;
-    }
 
     public String getNome() {
         return this.nome;

@@ -1,1 +1,148 @@
 Cafe | 2.9 | 5
+lactea | 3.0 | 2
+lactea | 3.0 | 2
+lactea | 3.0 | 2
+
+lactea | 3.0 | 4
+
+
+lactea | 3.0 | 4
+
+
+lactea | 3.0 | 4
+
+
+lactea | 3.0 | 4
+
+
+lactea | 3.0 | 10
+
+
+lactea | 3.0 | 10
+
+
+lactea | 3.0 | 10
+
+
+lactea | 3.0 | 10
+
+
+lactea | 3.0 | 10
+
+
+lactea | 3.0 | 10
+
+
+lactea | 30.0 | 10
+
+
+lactea | 30.0 | 10
+
+
+lactea | 10.0 | 10
+
+
+lactea | 10.0 | 10
+
+
+lactea | 10.0 | 10
+
+
+assadasa | 33.0 | 19
+
+
+sasas | 1.0 | 1
+
+
+sasas | 1.0 | 1
+
+
+sasas | 1.0 | 1
+
+
+empadinha | 13.0 | 19
+
+
+empadinha | 13.0 | 19
+
+
+empadinha | 1.0 | 1
+
+
+empadinha | 3.0 | 10
+
+
+empadinha | 1.0 | 6
+
+
+empadinha | 1.0 | 10
+
+
+empadinha | 3.0 | 4
+
+
+empadinha | 2.0 | 1
+
+
+empadinha | 1.0 | 1
+
+
+empadinha | 1.0 | 1
+
+
+empadinha | 2.0 | 1
+
+
+empadinha | 1.0 | 1
+
+
+empadinha | 1.0 | 1
+
+
+empadinha | 11313.0 | 1
+
+
+empadinha | 1332.0 | 1
+
+
+empadinha | 123434.0 | 1
+
+
+empadinha | 3.0 | 1
+
+
+empadinha | 3.0 | 1
+
+
+empadinha | 3.0 | 1
+
+
+empadinha | 3.0 | 1
+
+
+empadinha | 3.0 | 1
+
+
+empadinha | 3.0 | 1
+
+
+empadinha | 3.0 | 1
+
+
+empadinha | 3.0 | 1
+
+
+empadinha | 3.0 | 1
+
+
+empadinha | 2.0 | 1
+
+
+empadinha | 2.0 | 1
+
+
+empadinha | 1.0 | 1
+
+
+asas | 134.0 | 1
+

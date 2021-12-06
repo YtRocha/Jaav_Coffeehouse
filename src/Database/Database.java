@@ -37,12 +37,11 @@ public class Database {
         String[] _vendas = vendas.lerArquivo().split("\n");
         ArrayList<String[]> dados = new ArrayList<String[]>();
         String[][] dados_array = new String[dados.size()][];
-
         for (String venda : _vendas) {
-            String[] dados_venda = venda.split("\\|");
-            dados.add(dados_venda);
-
-            System.out.println(venda);
+            if (!venda.equals("")) {
+                String[] dados_venda = venda.split("\\|");
+                dados.add(dados_venda);
+            }
         }
         dados_array = dados.toArray(dados_array);
         return dados_array;
@@ -54,17 +53,17 @@ public class Database {
         String[][] dados_array = new String[dados.size()][];
 
         for (String venda : _vendas) {
-            String[] dados_venda = venda.split("\\|");
-
-            if (filtrar_cpf != null) {
-                if (dados_venda[3].trim().equals(filtrar_cpf)) {
+            if (!venda.equals("")) {
+                String[] dados_venda = venda.split("\\|");
+                if (filtrar_cpf != null) {
+                    if (dados_venda[3].trim().equals(filtrar_cpf)) {
+                        dados.add(dados_venda);
+                    }
+                } else {
                     dados.add(dados_venda);
                 }
-            } else {
-                dados.add(dados_venda);
             }
         }
-
         dados_array = dados.toArray(dados_array);
         return dados_array;
     }
@@ -253,10 +252,12 @@ public class Database {
 
     }
 
-    public static boolean excluiProduto(String codigo) {
-        JSONArray jarray = leProduto();
-        String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
-                + "estoque.json";
+    public static boolean excluiProduto(String codigo, String database) {
+        LerJSON leitor = new LerJSON(database);
+        leitor.lerJSON();
+        JSONArray jarray = new JSONArray();
+        jarray = leitor.getJarray();
+        
         int len = jarray.size();
         JSONArray newJarray = new JSONArray();
         JSONObject objeto = new JSONObject();

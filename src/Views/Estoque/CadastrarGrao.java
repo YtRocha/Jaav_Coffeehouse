@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Models.Produtos.CadastraGrao;
+import Models.Produtos.ExisteCodigo;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -17,6 +18,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import Views.Formulario;
 
@@ -103,31 +105,37 @@ public class CadastrarGrao extends AbaProdutos implements Formulario {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
                 } else {
                     try {
-                        Boolean gourmet = false;
-                        if (campoGourmet.getText().toLowerCase() == "sim") {
-                            gourmet = true;
-                        } else if (campoGourmet.getText().toLowerCase() == "nao") {
-                            gourmet = false;
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Insira sim ou nao para a pergunta sobre gourmet!");
-                        }
-
                         if (Integer.parseInt(campoQuantidade.getText()) > 0
                                 || Double.parseDouble(campoPreco.getText()) > 0) {
-                            CadastraGrao cadastraAperitivo = new CadastraGrao(campoCodigo.getText(),
-                                    campoNome.getText(),
+                                    ExisteCodigo existe = new ExisteCodigo(campoCodigo.getText().toUpperCase(),
+                                    "src"+File.separator+"Database"+File.separator+"Content"+File.separator+"estoque.json");
+                                    existe.existeEsseCodigo();
+                                    ExisteCodigo existeForaE = new ExisteCodigo(campoCodigo.getText().toUpperCase(),
+                                    "src"+File.separator+"Database"+File.separator+"Content"+File.separator+"fora_de_estoque.json");
+                                    existeForaE.existeEsseCodigo();
+                                    if(existe.getExiste() == null){
+                                        if(existeForaE.getExiste() == null){
+                                            CadastraGrao cadastraGrao = new CadastraGrao(campoCodigo.getText().toUpperCase(),
+                                    campoNome.getText().toLowerCase(),
                                     Double.parseDouble(campoPreco.getText()),
                                     Integer.parseInt(campoQuantidade.getText()),
-                                    campoCategorias.getText(), campoMarca.getText(), gourmet, campoTorra.getText());
-                            cadastraAperitivo.cadastrar();
-                            campoCodigo.setText("");
-                            campoNome.setText("");
-                            campoPreco.setText("");
-                            campoQuantidade.setText("");
-                            campoCategorias.setText("");
-                            campoMarca.setText("");
-                            campoGourmet.setText("");
-                            campoTorra.setText("");
+                                    campoCategorias.getText().toLowerCase(), campoMarca.getText().toLowerCase(), Boolean.parseBoolean(campoGourmet.getText()), campoTorra.getText().toLowerCase());
+                                    cadastraGrao.cadastrar();
+                                    campoCodigo.setText("");
+                                    campoNome.setText("");
+                                    campoPreco.setText("");
+                                    campoQuantidade.setText("");
+                                    campoCategorias.setText("");
+                                    campoMarca.setText("");
+                                    campoGourmet.setText("");
+                                    campoTorra.setText("");
+                                        } 
+                                        else{JOptionPane.showMessageDialog(null, "Produto com esse codigo ja existe e esta fora de estoque!");}
+                                    } else{JOptionPane.showMessageDialog(null, "Produto com esse codigo ja existe!");}
+                                    
+                            
+                                
+        
                         } else {
                             JOptionPane.showMessageDialog(null, "Insira numeros validos!");
                         }
