@@ -103,23 +103,15 @@ public class CadastrarGrao extends AbaProdutos implements Formulario {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
                 } else {
                     try {
-                        
-                        Boolean gourmet = false;
-                        if (campoGourmet.getText().toLowerCase() == "sim") {
-                            gourmet = true;
-                        } else if (campoGourmet.getText().toLowerCase() == "nao") {
-                            gourmet = false;
-                        } else {
-                            JOptionPane.showMessageDialog(null, "A respotas para gourmet e invalida e sera considerada como nao");
-                        }
                         if (Integer.parseInt(campoQuantidade.getText()) > 0
                                 || Double.parseDouble(campoPreco.getText()) > 0) {
-                            CadastraGrao cadastraAperitivo = new CadastraGrao(campoCodigo.getText(),
-                                    campoNome.getText(),
+        
+                            CadastraGrao cadastraGrao = new CadastraGrao(campoCodigo.getText().toUpperCase(),
+                                    campoNome.getText().toLowerCase(),
                                     Double.parseDouble(campoPreco.getText()),
                                     Integer.parseInt(campoQuantidade.getText()),
-                                    campoCategorias.getText(), campoMarca.getText(), gourmet, campoTorra.getText());
-                            cadastraAperitivo.cadastrar();
+                                    campoCategorias.getText().toLowerCase(), campoMarca.getText().toLowerCase(), Boolean.parseBoolean(campoGourmet.getText()), campoTorra.getText().toLowerCase());
+                            cadastraGrao.cadastrar();
                             campoCodigo.setText("");
                             campoNome.setText("");
                             campoPreco.setText("");
@@ -128,6 +120,8 @@ public class CadastrarGrao extends AbaProdutos implements Formulario {
                             campoMarca.setText("");
                             campoGourmet.setText("");
                             campoTorra.setText("");
+                                
+        
                         } else {
                             JOptionPane.showMessageDialog(null, "Insira numeros validos!");
                         }

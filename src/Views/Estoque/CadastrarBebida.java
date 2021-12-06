@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import Models.Produtos.CadastraAperitivo;
+import Models.Produtos.CadastraBebida;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -20,12 +20,12 @@ import java.awt.event.ActionListener;
 
 import Views.Formulario;
 
-public class CadastrarAperitivo extends AbaProdutos implements Formulario {
+public class CadastrarBebida extends AbaProdutos implements Formulario {
 
-    JLabel labelNome = new JLabel("Digite o nome do aperitivo:");
+    JLabel labelNome = new JLabel("Digite o nome da bebida:");
     JTextField campoNome = new JTextField(10);
 
-    JLabel labelCodigo = new JLabel("Digite o codigo do aperitivo:");
+    JLabel labelCodigo = new JLabel("Digite o codigo da bebida:");
     JTextField campoCodigo = new JTextField(10);
 
     JLabel labelPreco = new JLabel("Digite o preço:");
@@ -37,12 +37,10 @@ public class CadastrarAperitivo extends AbaProdutos implements Formulario {
     JLabel labelCategorias = new JLabel("Digite as categorias:");
     JTextField campoCategorias = new JTextField(10);
 
-    JLabel labelTamanho = new JLabel("Digite o tamanho do aperitivo:");
-    JTextField campoTamanho = new JTextField(10);
 
     JButton botaoCadastrar = new JButton("Cadastrar");
 
-    public CadastrarAperitivo() {
+    public CadastrarBebida() {
         inicializar();
         eventos();
     }
@@ -70,8 +68,7 @@ public class CadastrarAperitivo extends AbaProdutos implements Formulario {
         painelCadastro.add(campoQuantidade);
         painelCadastro.add(labelCategorias);
         painelCadastro.add(campoCategorias);
-        painelCadastro.add(labelTamanho);
-        painelCadastro.add(campoTamanho);
+        
 
         rodape.add(botaoCadastrar);
         painel.add(leftSpace, BorderLayout.LINE_START);
@@ -88,24 +85,24 @@ public class CadastrarAperitivo extends AbaProdutos implements Formulario {
                 if (campoNome.getText().equals("") || campoCodigo.getText().equals("")
                         || campoPreco.getText().equals("")
                         || campoQuantidade.getText().equals("") || campoCategorias.getText().equals("")
-                        || campoTamanho.getText().equals("")) {
+                        ) {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
                 } else {
                     try {
                         if (Integer.parseInt(campoQuantidade.getText()) > 0
                                 || Double.parseDouble(campoPreco.getText()) > 0) {
-                            CadastraAperitivo cadastraAperitivo = new CadastraAperitivo(campoCodigo.getText().toUpperCase(),
+                            CadastraBebida cadastraBebida = new CadastraBebida(campoCodigo.getText().toUpperCase(),
                                     campoNome.getText().toLowerCase(),
                                     Double.parseDouble(campoPreco.getText()),
                                     Integer.parseInt(campoQuantidade.getText()),
-                                    campoCategorias.getText().toLowerCase(), campoTamanho.getText().toLowerCase());
-                            cadastraAperitivo.cadastrar();
+                                    campoCategorias.getText().toLowerCase());
+                            cadastraBebida.cadastrar();
                             campoCodigo.setText("");
                             campoNome.setText("");
                             campoPreco.setText("");
                             campoQuantidade.setText("");
                             campoCategorias.setText("");
-                            campoTamanho.setText("");
+
                         } else {
                             JOptionPane.showMessageDialog(null, "Insira numeros validos!");
                         }
