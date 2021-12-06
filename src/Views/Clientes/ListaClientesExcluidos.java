@@ -13,7 +13,7 @@ public class ListaClientesExcluidos extends AbaClientes {
 
     public void inicializar() {
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
-        String[] colunas = { "ID", "Nome", "CPF", "Data de exlusão" };
+        String[] colunas = { "Nome", "CPF", "Data de exlusão" };
 
         JTable tabela = new JTable(clientes_excluidos, colunas);
         JScrollPane scroll = new JScrollPane(tabela);

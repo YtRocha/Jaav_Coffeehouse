@@ -135,8 +135,8 @@ public class Database {
             String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
 
             if (cliente.length > 1) {
-                if (cliente[2].trim().equals(cpf)) {
-                    cliente_excluido = cliente[0].trim() + " | " + cliente[1].trim() + " | " + cliente[2].trim() + " | "
+                if (cliente[1].trim().equals(cpf)) {
+                    cliente_excluido = cliente[0].trim() + " | " + cliente[1].trim() + " | "
                             + timeStamp;
                 } else {
                     clientes_filtrados.add(cliente);
@@ -161,7 +161,7 @@ public class Database {
 
         for (String[] cliente : clientes_filtrados_array) {
             clientes_arquivo = new EscreverArquivo(db,
-                    (cliente[0].trim() + " | " + cliente[1].trim() + " | " + cliente[2].trim()));
+                    (cliente[0].trim() + " | " + cliente[1].trim()));
             clientes_arquivo.escreverArquivo();
         }
 
