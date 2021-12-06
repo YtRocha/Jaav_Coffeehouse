@@ -80,6 +80,10 @@ public class CadastrarVendas extends AbaVendas {
                     try {
                         CadastraVenda cadastrarVendas = new CadastraVenda(produto, valor, quantidade, cpf);
                         cadastrarVendas.cadastrar();
+                        campoCliente.setText("");
+                        campoProduto.setText("");
+                        campoQuantidade.setText("");
+                        campoValor.setText("");
                         JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null, "CPF inválido!");
