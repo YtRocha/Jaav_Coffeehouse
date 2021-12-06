@@ -1,6 +1,7 @@
 package Views.Clientes;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Models.Clientes.ExcluiCliente;
@@ -58,8 +59,15 @@ public class ExcluirClientes extends AbaClientes implements Formulario {
         botaoExcluir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ExcluiCliente excluiCliente = new ExcluiCliente(campoCPF.getText());
-                excluiCliente.excluir();
+                try {
+                    ExcluiCliente excluiCliente = new ExcluiCliente(campoCPF.getText());
+                    excluiCliente.excluir();
+                    campoCPF.setText("");
+                    JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                    ex.printStackTrace();
+                }
             }
         });
     }
