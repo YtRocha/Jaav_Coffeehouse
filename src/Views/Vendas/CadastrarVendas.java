@@ -20,6 +20,7 @@ import java.io.File;
 import Models.Produtos.AchaCodigoQuantidade;
 import Models.Produtos.AlteraQuantidadeProduto;
 import Models.Vendas.CadastraVenda;
+import Utils.JSON.LerJSON;
 
 public class CadastrarVendas extends AbaVendas {
     JLabel labelProduto = new JLabel("Digite o nome do produto:");
@@ -79,7 +80,7 @@ public class CadastrarVendas extends AbaVendas {
                 String produto = campoProduto.getText();
                 int quantidade = Integer.parseInt(campoQuantidade.getText());
                 double valor = Double.parseDouble(campoValor.getText());
-                
+
                 if (!cpf.equals("")) {
                     try {
                         AchaCodigoQuantidade acharCodigoQuantidade = new AchaCodigoQuantidade(produto,

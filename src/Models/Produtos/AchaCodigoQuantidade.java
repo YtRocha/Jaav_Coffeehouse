@@ -32,7 +32,7 @@ public class AchaCodigoQuantidade {
     }
     
     
-    public boolean acharCodigoQuantidade(){
+    public void acharCodigoQuantidade(){
         LerJSON leitor = new LerJSON(database);
         leitor.lerJSON();
         JSONArray jarray = leitor.getJarray();
@@ -45,14 +45,14 @@ public class AchaCodigoQuantidade {
                 if(objeto.containsValue(nome.toLowerCase())){
                     this.codigo = objeto.get("codigo").toString();
                     this.quantidade = Integer.parseInt(objeto.get("quantidade").toString());
-                    return true;
+                    
                 }
                 
             }
         } catch (ParseException erro) {
             System.out.println("Erro ao utilizar o parser");
             
-        } return false;
+        }
     }
 
 }
