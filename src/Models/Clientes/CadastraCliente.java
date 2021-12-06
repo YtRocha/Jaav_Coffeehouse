@@ -20,9 +20,5 @@ public class CadastraCliente implements ICadastraCliente {
         return Database.cadastraCliente(this.cliente);
     }
 
-    @Override
-    public String geraId() {
-        // TODO: implementar gerador de id.
-        return null;
-    }
+    
 }

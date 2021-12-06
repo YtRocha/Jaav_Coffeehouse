@@ -21,10 +21,6 @@ public class CadastraAperitivo implements ICadastraProduto {
         return Database.cadastraAperitivo(this.aperitivo);
     }
 
-    @Override
-    public String geraId() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
 
 }

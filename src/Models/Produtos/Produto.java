@@ -2,7 +2,6 @@ package Models.Produtos;
 
 public abstract class Produto {
 
-    private String id;
 
     private String codigo;
 
@@ -19,8 +18,7 @@ public abstract class Produto {
     public Produto() {
     }
 
-    public Produto(String id, String codigo, String nome, Double preco, int quantidade, String categorias) {
-        this.id = id;
+    public Produto(String codigo, String nome, Double preco, int quantidade, String categorias) {
         this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
@@ -30,9 +28,6 @@ public abstract class Produto {
 
     /* ---- Getters e Setters ---- */
 
-    public String getId() {
-        return this.id;
-    }
 
     public String getCodigo() {
         return this.codigo;

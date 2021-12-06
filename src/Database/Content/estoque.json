@@ -60,10 +60,11 @@
         "quantidade": 10
     },
     {
-        "preco": 20.0,
-        "codigo": "B001L",
-        "categorias": "bebida, leite",
-        "nome": "lactea",
-        "quantidade": 30
+        "preco": 10.0,
+        "codigo": "A001E",
+        "tamanho": "pequeno",
+        "categorias": "aperitivo, salgado",
+        "nome": "empadinha",
+        "quantidade": 20
     }
 ]
