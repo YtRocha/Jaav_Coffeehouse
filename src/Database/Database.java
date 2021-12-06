@@ -289,6 +289,7 @@ public class Database {
 
     }
 
+
     public static boolean repoeNoEstoque(String codigo, Integer quantidade) {
         String database = "src" + File.separator + "Database" + File.separator + "Content" + File.separator
                 + "fora_de_estoque.json";
