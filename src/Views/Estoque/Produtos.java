@@ -10,7 +10,8 @@ public class Produtos {
     JPanel painel = new JPanel(new GridLayout(1, 4));
     JTabbedPane abas = new JTabbedPane();
 
-    JPanel painelCadastrarCliente = new CadastrarAperitivo().getPainel();
+    JPanel painelCadastrarAperitivo = new CadastrarAperitivo().getPainel();
+    JPanel painelCadastrarGrao = new CadastrarGrao().getPainel();
     
 
     public Produtos() {
@@ -22,7 +23,8 @@ public class Produtos {
     }
 
     public void inicializar() {
-        abas.addTab("Cadastrar clientes", painelCadastrarCliente);
+        abas.addTab("Cadastrar Aperitivos", painelCadastrarAperitivo);
+        abas.addTab("Cadastrar Graos", painelCadastrarGrao);
         
         painel.add(abas);
     }
