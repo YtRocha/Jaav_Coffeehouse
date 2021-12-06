@@ -12,6 +12,7 @@ public class FiltrarVendas extends AbaVendas implements Formulario {
     JLabel lblFiltrarVendas = new JLabel("Digite um CPF para filtrar:");
     JTextField txtFiltrarVendas = new JTextField(10);
     JButton btnFiltrarVendas = new JButton("Filtrar");
+    JButton btnAtualizar = new JButton("Atualizar");
 
     JPanel pnlPesquisa = new JPanel(new BorderLayout());
 
@@ -29,9 +30,12 @@ public class FiltrarVendas extends AbaVendas implements Formulario {
     }
 
     public JPanel getPnlPesquisa() {
+        JPanel btn_container = new JPanel();
+        btn_container.add(btnFiltrarVendas);
+        btn_container.add(btnAtualizar);
         pnlPesquisa.add(lblFiltrarVendas, BorderLayout.PAGE_START);
         pnlPesquisa.add(txtFiltrarVendas, BorderLayout.CENTER);
-        pnlPesquisa.add(btnFiltrarVendas, BorderLayout.PAGE_END);
+        pnlPesquisa.add(btn_container, BorderLayout.LINE_END);
 
         return pnlPesquisa;
     }
@@ -56,6 +60,10 @@ public class FiltrarVendas extends AbaVendas implements Formulario {
             pnlTabela.removeAll();
             inicializar();
         });
+        btnAtualizar.addActionListener(e -> {
+            vendas = new LerVendas().dadosVendasIdentificadas(null);
+            pnlTabela.removeAll();
+            inicializar();
+        });
     }
-
 }
