@@ -252,8 +252,95 @@ public class Database {
 
     }
 
-    public static String[][] lerTodosProdutos() {
-        JSONArray jarray = leProduto();
+    public static String[][] lerProdutosFiltrados(String database, String filtro) {
+        LerJSON leitor = new LerJSON(database);
+        leitor.lerJSON();
+        JSONArray jarray = new JSONArray();
+        jarray = leitor.getJarray();
+        ArrayList<String[]> produtos = new ArrayList<String[]>();
+
+        for (int i = 0; i < jarray.size(); i++) {
+            JSONObject objeto = new JSONObject();
+            JSONParser parser = new JSONParser();
+            if(jarray.get(i).toString().contains(filtro)){
+            try {
+                objeto = (JSONObject) parser.parse(jarray.get(i).toString());
+                String[] produto = new String[9];
+                Object codigo = objeto.get("codigo");
+                Object nome = objeto.get("nome");
+                Object preco = objeto.get("preco");
+                Object quantidade = objeto.get("quantidade");
+                Object tamanho = objeto.get("tamanho");
+                Object categorias = objeto.get("categorias");
+                Object marca = objeto.get("marca");
+                Object torra = objeto.get("torra");
+                Object gourmet = objeto.get("gourmet");
+                if (codigo != null) {
+                    produto[0] = codigo.toString();
+                } else {
+                    produto[0] = " ";
+                }
+                if (nome != null) {
+                    produto[1] = nome.toString();
+                } else {
+                    produto[1] = " ";
+                }
+                if (preco != null) {
+                    produto[2] = preco.toString();
+                } else {
+                    produto[2] = " ";
+                }
+                if (categorias != null) {
+                    produto[3] = categorias.toString();
+                } else {
+                    produto[3] = " ";
+                }
+                if (quantidade != null) {
+                    produto[4] = quantidade.toString();
+                } else {
+                    produto[4] = " ";
+                }
+                if (tamanho != null) {
+                    produto[5] = tamanho.toString();
+                } else {
+                    produto[5] = " ";
+                }
+                if (marca != null) {
+                    produto[6] = marca.toString();
+                } else {
+                    produto[6] = " ";
+                }
+                if (torra != null) {
+                    produto[7] = torra.toString();
+                } else {
+                    produto[7] = " ";
+                }
+                if (gourmet != null) {
+                    produto[8] = gourmet.toString();
+                } else {
+                    produto[8] = " ";
+                }
+                produtos.add(produto);
+            
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        }
+
+        String[][] produtos_array = new String[produtos.size()][9];
+        for (int i = 0; i < produtos.size(); i++) {
+            produtos_array[i] = produtos.get(i);
+        }
+
+        return produtos_array;
+    }
+
+    public static String[][] lerTodosProdutos(String database) {
+        LerJSON leitor = new LerJSON(database);
+        leitor.lerJSON();
+        JSONArray jarray = new JSONArray();
+        jarray = leitor.getJarray();
         ArrayList<String[]> produtos = new ArrayList<String[]>();
 
         for (int i = 0; i < jarray.size(); i++) {
@@ -267,7 +354,7 @@ public class Database {
                 Object preco = objeto.get("preco");
                 Object quantidade = objeto.get("quantidade");
                 Object tamanho = objeto.get("tamanho");
-                Object categorias = objeto.get("tamanho");
+                Object categorias = objeto.get("categorias");
                 Object marca = objeto.get("marca");
                 Object torra = objeto.get("torra");
                 Object gourmet = objeto.get("gourmet");

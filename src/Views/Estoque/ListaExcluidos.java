@@ -6,12 +6,13 @@ import javax.swing.*;
 
 import Models.Produtos.LerProdutos;
 
-public class ListaProdutos extends AbaProdutos {
-    String[][] produtos = new LerProdutos("src"+File.separator+"Database"+File.separator+"Content"+File.separator+"estoque.json").dadosProdutos();
+
+public class ListaExcluidos extends AbaProdutos {
+    String[][] produtos = new LerProdutos("src"+File.separator+"Database"+File.separator+"Content"+File.separator+"excluidos_do_estoque.json").dadosProdutos();
 
     JButton btnAtualizar = new JButton("Atualizar");
 
-    public ListaProdutos() {
+    public ListaExcluidos() {
         inicializar();
         eventos();
     }
@@ -36,7 +37,7 @@ public class ListaProdutos extends AbaProdutos {
 
     public void eventos() {
         btnAtualizar.addActionListener(e -> {
-            produtos = new LerProdutos("src"+File.separator+"Database"+File.separator+"Content"+File.separator+"estoque.json").dadosProdutos();
+            produtos = new LerProdutos("src"+File.separator+"Database"+File.separator+"Content"+File.separator+"excluidos_do_estoque.json").dadosProdutos();
             painel.removeAll();
             inicializar();
         });

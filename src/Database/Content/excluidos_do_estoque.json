@@ -7,14 +7,7 @@
         "nome": "torta de limao",
         "quantidade": "excluido"
     },
-    {
-        "preco": 10.0,
-        "codigo": "A001E",
-        "tamanho": "pequeno",
-        "categorias": "aperitivo, salgado",
-        "nome": "empadinha",
-        "quantidade": "excluido"
-    },
+
     {
         "preco": 20.0,
         "codigo": "B001L",
