@@ -1,15 +1,17 @@
-package Views.Clientes;
+package Views.Estoque;
+
+import java.io.File;
 
 import javax.swing.*;
 
-import Models.Clientes.LerClientes;
+import Models.Produtos.LerProdutos;
 
-public class ListaClientes extends AbaClientes {
-    String[][] clientes = new LerClientes().dadosClientes();
+public class ListaProdutos extends AbaProdutos {
+    String[][] produtos = new LerProdutos("src"+File.separator+"Database"+File.separator+"Content"+File.separator+"estoque.json").dadosProdutos();
 
     JButton btnAtualizar = new JButton("Atualizar");
 
-    public ListaClientes() {
+    public ListaProdutos() {
         inicializar();
         eventos();
     }
@@ -23,9 +25,10 @@ public class ListaClientes extends AbaClientes {
 
         painel.add(painelBotoes);
 
-        String[] colunas = { "Nome", "CPF" };
+        String[] colunas = { "Codigo", "Nome", "Preço", "Categorias", "Quantidade", "Tamanho", "Marca", "Torra",
+                "Gourmet" };
 
-        JTable tabela = new JTable(clientes, colunas);
+        JTable tabela = new JTable(produtos, colunas);
         JScrollPane scroll = new JScrollPane(tabela);
 
         painel.add(scroll);
@@ -33,7 +36,7 @@ public class ListaClientes extends AbaClientes {
 
     public void eventos() {
         btnAtualizar.addActionListener(e -> {
-            clientes = new LerClientes().dadosClientes();
+            produtos = new LerProdutos("src"+File.separator+"Database"+File.separator+"Content"+File.separator+"estoque.json").dadosProdutos();
             painel.removeAll();
             inicializar();
         });
