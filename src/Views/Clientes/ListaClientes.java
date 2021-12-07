@@ -11,6 +11,7 @@ public class ListaClientes extends AbaClientes {
 
     public ListaClientes() {
         inicializar();
+        eventos();
     }
 
     public void inicializar() {

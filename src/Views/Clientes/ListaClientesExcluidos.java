@@ -10,6 +10,7 @@ public class ListaClientesExcluidos extends AbaClientes {
 
     public ListaClientesExcluidos() {
         inicializar();
+        eventos();
     }
 
     public void inicializar() {
